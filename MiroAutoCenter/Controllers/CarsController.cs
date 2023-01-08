@@ -24,7 +24,8 @@ namespace MiroAutoCenter.Controllers
             return View(cars);
         }
 
-        [Authorize(Roles = UserConstants.Administrator)]
+        //[Authorize(Roles = UserConstants.Administrator)]
+        [Authorize]
         public IActionResult Add()
         {
             return View(new CarAddFormModel
@@ -34,7 +35,8 @@ namespace MiroAutoCenter.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = UserConstants.Administrator)]
+        //[Authorize(Roles = UserConstants.Administrator)]
+        [Authorize]
         public IActionResult Add(CarAddFormModel car)
         {
             var userId = this.users.IdByUser(this.User.Id());
