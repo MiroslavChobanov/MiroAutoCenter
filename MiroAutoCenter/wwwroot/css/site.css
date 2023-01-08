@@ -16,3 +16,7 @@ html {
 body {
  // margin-bottom: 60px;
 }
+
+.container px-4 px-lg-5 {
+    background-image: url("https://assets.porsche.com/-/media/Project/DealerWebsites/SaudiArabia/Riyadh/Offers-Teaser/PME-AS-22-145_Service-Clinic-Campaign-KSA_Website_Teaser_image_1920x1440px.jpg?rev=ab823375d5dd4480b404365be6021bc2");
+}
