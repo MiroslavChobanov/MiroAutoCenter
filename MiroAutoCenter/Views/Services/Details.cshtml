@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MiroAutoCenter.Core.Constants
+@using MiroAutoCenter.Core.Models.Services
+@using MiroAutoCenter.Data.Models
+
+@model ServicesListingModel
+@inject SignInManager<WebsiteUser> SignInManager
+@inject UserManager<WebsiteUser> UserManager
+
+@{
+    ViewBag.Title = $"{@Model.Name}";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-bus-alt"></i>
+                    Information
+                </h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-6">Name:</dt>
+                    <dd class="col-sm-6">@Model.Name</dd>
+                    <dt class="col-sm-6">Description:</dt>
+                    <dd class="col-sm-6">@Model.Description</dd>
+                    <dt class="col-sm-6">Price:</dt>
+                    <dd class="col-sm-6">@Model.Price</dd>
+                    <dt class="col-sm-6">Time:</dt>
+                    <dd class="col-sm-6">@Model.Time</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    @if (this.User.IsInRole(UserConstants.Administrator))
+    {
+        <div class="col-md-4">
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h5 class="text-center">
+                        Options to edit or delete
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <a asp-controller="Services" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning float-left">Edit</a>
+                    <a asp-controller="Services" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger float-right">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

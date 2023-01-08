@@ -1,0 +1,57 @@
+﻿@using MiroAutoCenter.Core.Models.Services
+@model IEnumerable<ServicesListingModel>
+
+@{
+    ViewBag.Title = "Services";
+}
+
+@if (!Model.Any())
+{
+    <h2 class="text-center">No services yet!</h2>
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h5 class="text-center">Available services</h5>
+                </div>
+                <div>
+                    <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-12">
+                                <table id="example" class="table table-bordered table-hover dataTable dtr-inline">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th tabindex="0" rowspan="1" colspan="1">Name</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Description</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Price</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var service in Model)
+                                        {
+                                            <tr>
+                                                <td><a asp-controller="Services" asp-action="Details" asp-route-id="@service.Id">@service.Name</a></td>
+                                                <td>@service.Description</td>
+                                                <td>@service.Price</td>
+                                                <td>@service.Time</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
