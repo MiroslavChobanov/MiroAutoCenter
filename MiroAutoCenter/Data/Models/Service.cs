@@ -21,25 +21,33 @@ namespace MiroAutoCenter.Data.Models
         [StringLength(500)]
         public string? Description { get; set; }
 
+        public decimal Price { get; set; }
+
+        [StringLength(50)]
+        [Required]
+        public string Time { get; set; }
+        [Required]
+        public bool IsDeleted { get; set; }
+
         [StringLength(500)]
         public string? UserMessage { get; set; }
 
         [StringLength(500)]
         public string? AdminMessage { get; set; }
 
-        [Required]
+
         public Guid ServiceStatusId { get; set; }
 
         [ForeignKey(nameof(ServiceStatusId))]
         public ServiceStatus ServiceStatus { get; set; }
 
-        [Required]
+
         public string UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
         public WebsiteUser User { get; set; }
 
-        [Required]
+
         public Guid CarId { get; set; }
 
         [ForeignKey(nameof(CarId))]
