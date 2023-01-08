@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MiroAutoCenter.Core.Constants
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - MiroAutoCenter</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/plugins/toastr/toastr.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    @await RenderSectionAsync("Head", false)
+</head>
+<body class="hold-transition sidebar-collapse layout-top-nav">
+    <div class="wrapper">
+
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+            <div class="container">
+                <a href="/" class="navbar-brand">
+                    <img src="~/img/TTLogo.png" alt="Trolley Logo" class="brand-image" style="opacity: .8">
+                    <span class="brand-text font-weight-light">MiroAutoCenter</span>
+                </a>
+
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        @if (this.User.IsInRole(UserConstants.Administrator))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="All">My cars</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">More options</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="All">Contacts</a>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                </div>
+
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <li class="nav-item">
+                        <partial name="_LoginPartial" />
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <partial name="_SidebarMenu" />
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">@ViewData["Title"]</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline">
+                Anything you want
+            </div>
+            <strong>Copyright &copy; @DateTime.UtcNow.Year <a href="/">MiroAutoCenter</a> </strong>All rights are reserved.
+        </footer>
+    </div>
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/adminlte.min.js"></script>
+    <script src="~/plugins/toastr/toastr.min.js"></script>
+    <partial name="_UserMessages" />
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

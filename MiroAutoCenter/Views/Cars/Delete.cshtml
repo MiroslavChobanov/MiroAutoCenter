@@ -1,0 +1,34 @@
+﻿@using MiroAutoCenter.Core.Models.Cars
+@model CarDeleteModel
+
+@{
+    ViewData["Title"] = "Car removal";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Are you sure you want to delete the following car?</h3>
+            </div>
+            <form method="post">
+                <div class="card-body">
+                    <div class="form-group text-center">
+                        <h3 class="text-center" asp-for="Title">Make: @Model.Make</h3><br>
+                        <b class="text-center" asp-for="Date">Model: @Model.Model</b><br>
+                        <b class="text-center" asp-for="Date">Year of creation: @Model.YearOfCreation</b><br>
+                        <b class="text-center" asp-for="Date">Plate number: @Model.PlateNumber</b>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a asp-controller="Vehicles" asp-action="All" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger float-right">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

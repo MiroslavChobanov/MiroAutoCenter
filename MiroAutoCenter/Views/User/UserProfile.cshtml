@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MiroAutoCenter.Core.Constants
+@using MiroAutoCenter.Core.Models.Users
+@using MiroAutoCenter.Data.Models
+
+@inject SignInManager<WebsiteUser> SignInManager
+@inject UserManager<WebsiteUser> UserManager
+@model UserDetailsModel
+
+@{
+    ViewBag.Title = $"{Model.Username}'s profile";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <h3 class="profile-username text-center">@Model.Username</h3>
+                        <p class="text-muted text-center">@(Model.Role == null ? "User" : Model.Role)</p>
+                    </div>
+
+                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">User email</h3>
+                        </div>
+                        <div class="card-body">
+                            <strong><i class="far fa-file-alt mr-1"></i>@Model.Email</strong>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">User email</h3>
+                        </div>
+                        <div class="card-body text-center">
+                            <strong>To see your email <a asp-area="Identity" asp-page="/Account/Login">log</a> into your profile or <a asp-area="Identity" asp-page="/Account/Register">register</a>.</strong>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            @if (@Model.Username == User.Identity.Name)
+                            {
+                                <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Options</a></li>
+                            }
+                            <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            @if (@Model.Username == User.Identity.Name)
+                            {
+                                <div class="tab-pane" id="card">
+                                    @if (this.User.IsInRole(UserConstants.Administrator))
+                                    {
+                                        <h3 class="text-center">You are part of MiroAutoCenter's team.</h3>
+                                    }
+                                </div>
+                            }
+
+                            <div class="tab-pane active text-center" id="timeline">
+                                @if (this.User.Identity.Name == Model.Username)
+                                {
+                                    <h3>Welcome to your profile!</h3>
+                                }
+                                else
+                                {
+                                    <h3>Welcome to @Model.Username 's profile!</h3>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

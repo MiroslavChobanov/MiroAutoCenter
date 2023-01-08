@@ -1,0 +1,67 @@
+﻿@using MiroAutoCenter.Core.Models.Cars
+@model CarAddFormModel
+
+@{
+    ViewData["Title"] = "Add car";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Add car</h3>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Make"></label>
+                        <input asp-for="Make" class="form-control" placeholder="Add make here...">
+                        <span asp-validation-for="Make" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Model"></label>
+                        <input asp-for="Model" class="form-control" placeholder="Add model here...">
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="YearOfCreation"></label>
+                        <input asp-for="YearOfCreation" class="form-control" placeholder="Add year of creation here...">
+                        <span asp-validation-for="YearOfCreation" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label asp-for="PlateNumber" class="control-label"></label>
+                            <input asp-for="PlateNumber" class="form-control" value="">
+                            <span asp-validation-for="PlateNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Mileage" class="control-label"></label>
+                            <input asp-for="Mileage" class="form-control">
+                            <span asp-validation-for="Mileage" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            <label asp-for="CarTypeId" class="control-label"></label>
+                            <select asp-for="CarTypeId" class="form-control">
+                                @foreach (var carType in Model.CarTypes)
+                                {
+                                    <option value = "@carType.Id">@carType.Type</option>
+                                }
+                            </select>
+                            <span asp-validation-for="CarTypeId" class="text-danger"></span>
+                        </div>
+                </div>
+                <div class="card-body">
+                    <a asp-controller="Vehicles" asp-action="All" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary float-right">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
