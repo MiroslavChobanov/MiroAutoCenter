@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MiroAutoCenter.Core.Constants
+@using MiroAutoCenter.Data.Models
+@inject SignInManager<WebsiteUser> SignInManager
+@inject UserManager<WebsiteUser> UserManager
 
 <!DOCTYPE html>
 
@@ -25,7 +28,6 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="/" class="navbar-brand">
-                    <img src="~/img/TTLogo.png" alt="Trolley Logo" class="brand-image" style="opacity: .8">
                     <span class="brand-text font-weight-light">MiroAutoCenter</span>
                 </a>
 
@@ -41,12 +43,19 @@
                                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="All">My cars</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Our services</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Services</a>
+                            </ul>
+                            </li>
+                        @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator))
+                        {
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="MyCars">My cars</a>
+                            </li>
+                        }
+                        
                         <li class="nav-item dropdown">
                             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">More options</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">

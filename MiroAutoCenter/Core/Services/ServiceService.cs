@@ -19,6 +19,7 @@ namespace MiroAutoCenter.Core.Services
         {
             return this.data
                  .Services
+                 .Where(x => !x.IsDeleted)
                  .Select(x => new ServicesListingModel
                  {
                      Id = x.Id,

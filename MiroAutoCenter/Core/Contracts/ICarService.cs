@@ -4,7 +4,7 @@ namespace MiroAutoCenter.Core.Contracts
 {
     public interface ICarService
     {
-        public List<CarsListingModel> All();
+        //public List<CarsListingModel> All();
 
 
         public Guid CreateCar(
@@ -14,7 +14,8 @@ namespace MiroAutoCenter.Core.Contracts
             bool isDeleted,
             string plateNumber,
             int mileage,
-            Guid carTypeId
+            Guid carTypeId,
+            string userId
             );
 
         IEnumerable<CarCarTypeViewModel> AllCarTypes();
@@ -35,5 +36,7 @@ namespace MiroAutoCenter.Core.Contracts
         public CarDeleteModel DeleteViewData(Guid id);
 
         public CarAddFormModel EditViewData(Guid id);
+
+        IEnumerable<CarsListingModel> ByUser(string userId);
     }
 }

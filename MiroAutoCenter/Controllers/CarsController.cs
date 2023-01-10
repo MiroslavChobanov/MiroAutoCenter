@@ -17,11 +17,12 @@ namespace MiroAutoCenter.Controllers
             this.users = users;
         }
 
-        public IActionResult All()
+        [Authorize]
+        public IActionResult MyCars()
         {
-            var cars = this.cars.All();
+            var myCars = this.cars.ByUser(this.User.Id());
 
-            return View(cars);
+            return View(myCars);
         }
 
         //[Authorize(Roles = UserConstants.Administrator)]
@@ -54,10 +55,11 @@ namespace MiroAutoCenter.Controllers
                 false,
                 car.PlateNumber,
                 car.Mileage,
-                car.CarTypeId);
+                car.CarTypeId,
+                userId);
 
             TempData[MessageConstants.SuccessMessage] = "The car was successfully added.";
-            return RedirectToAction("All");
+            return RedirectToAction("MyCars");
         }
 
         public IActionResult Details(Guid id)
@@ -73,13 +75,13 @@ namespace MiroAutoCenter.Controllers
             if (cars == null)
             {
                 TempData[MessageConstants.ErrorMessage] = "An error occurred!";
-                return RedirectToAction("All");
+                return RedirectToAction("MyCars");
             }
 
             return View(cars);
         }
 
-        [Authorize(Roles = UserConstants.Administrator)]
+        //[Authorize(Roles = UserConstants.Administrator)]
         public IActionResult Edit(Guid id)
         {
             var userId = this.users.IdByUser(this.User.Id());
@@ -100,7 +102,7 @@ namespace MiroAutoCenter.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = UserConstants.Administrator)]
+        //[Authorize(Roles = UserConstants.Administrator)]
         public IActionResult Edit(Guid id, CarAddFormModel car)
         {
 
@@ -123,7 +125,7 @@ namespace MiroAutoCenter.Controllers
             return Redirect($"../../Cars/Details/{id}");
         }
 
-        [Authorize(Roles = UserConstants.Administrator)]
+        //[Authorize(Roles = UserConstants.Administrator)]
         public IActionResult Delete(Guid id)
         {
             var userId = this.users.IdByUser(this.User.Id());
@@ -142,7 +144,7 @@ namespace MiroAutoCenter.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = UserConstants.Administrator)]
+        //[Authorize(Roles = UserConstants.Administrator)]
         public IActionResult Delete(Guid id, CarDeleteModel car)
         {
 
@@ -154,7 +156,7 @@ namespace MiroAutoCenter.Controllers
             }
 
             TempData[MessageConstants.SuccessMessage] = "Car has been successfully deleted.";
-            return RedirectToAction("All");
+            return RedirectToAction("MyCars");
         }
     }
 }

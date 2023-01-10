@@ -15,26 +15,26 @@ namespace MiroAutoCenter.Core.Services
             this.data = data;
         }
 
-        public List<CarsListingModel> All()
-        {
-            return this.data
-                 .Cars
-                 .Where(x => !x.IsDeleted)
-                 .Select(x => new CarsListingModel
-                 {
-                     Id = x.Id,
-                     Make = x.Make,
-                     Model = x.Model,
-                     YearOfCreation = x.YearOfCreation,
-                     PlateNumber= x.PlateNumber,
-                     Mileage= x.Mileage,
-                     CarTypeId= x.CarTypeId,
-                     CarType = x.CarType
+        //public List<CarsListingModel> All()
+        //{
+        //    return this.data
+        //         .Cars
+        //         .Where(x => !x.IsDeleted)
+        //         .Select(x => new CarsListingModel
+        //         {
+        //             Id = x.Id,
+        //             Make = x.Make,
+        //             Model = x.Model,
+        //             YearOfCreation = x.YearOfCreation,
+        //             PlateNumber= x.PlateNumber,
+        //             Mileage= x.Mileage,
+        //             CarTypeId= x.CarTypeId,
+        //             CarType = x.CarType
                      
-                 })
-                 .OrderBy(x => x.Id)
-                 .ToList();
-        }
+        //         })
+        //         .OrderBy(x => x.Id)
+        //         .ToList();
+        //}
 
         public IEnumerable<CarCarTypeViewModel> AllCarTypes()
         {
@@ -54,7 +54,8 @@ namespace MiroAutoCenter.Core.Services
             bool isDeleted,
             string plateNumber,
             int mileage,
-            Guid carTypeId)
+            Guid carTypeId,
+            string userId)
         {
             var newCar = new Car
             {
@@ -64,7 +65,8 @@ namespace MiroAutoCenter.Core.Services
                 PlateNumber = plateNumber,
                 Mileage = mileage,
                 IsDeleted = isDeleted,
-                CarTypeId = carTypeId
+                CarTypeId = carTypeId,
+                UserId = userId
             };
 
             this.data.Cars.Add(newCar);
@@ -84,8 +86,7 @@ namespace MiroAutoCenter.Core.Services
                     Model = x.Model,
                     YearOfCreation = x.YearOfCreation,
                     PlateNumber = x.PlateNumber,
-                    Mileage = x.Mileage,
-                    CarTypeId = x.CarTypeId
+                    Mileage = x.Mileage
                 })
                 .First();
         }
@@ -162,6 +163,29 @@ namespace MiroAutoCenter.Core.Services
                     CarTypeId = x.CarTypeId
                 })
                 .First();
+        }
+
+        public IEnumerable<CarsListingModel> ByUser(string userId)
+        {
+            return GetCars(this.data
+                .Cars
+                .Where(c => c.UserId == userId));
+        }
+
+        private IEnumerable<CarsListingModel> GetCars(IQueryable<Car> carQuery)
+        {
+            return carQuery
+                .Where(x => !x.IsDeleted)
+                .Select(v => new CarsListingModel
+                {
+                    Id = v.Id,
+                    Make = v.Make,
+                    Model = v.Model,
+                    PlateNumber = v.PlateNumber,
+                    YearOfCreation = v.YearOfCreation,
+                    Mileage = v.Mileage
+                })
+                .ToList();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace MiroAutoCenter.Data.Models
         public ServiceStatus()
         {
             this.Id = Guid.NewGuid();
-            this.Services = new HashSet<Service>();
+            this.ServicesCars = new HashSet<ServiceCar>();
         }
 
         [Key]
@@ -26,6 +26,6 @@ namespace MiroAutoCenter.Data.Models
         [Range(0, 10)]
         public int Counter { get; set; }
 
-        public ICollection<Service> Services { get; set; }
+        public ICollection<ServiceCar> ServicesCars { get; set; }
     }
 }

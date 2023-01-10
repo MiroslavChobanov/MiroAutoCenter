@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiroAutoCenter.Data;
 
@@ -11,9 +12,10 @@ using MiroAutoCenter.Data;
 namespace MiroAutoCenter.Data.Migrations
 {
     [DbContext(typeof(MiroAutoCenterDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230110173715_CarUpdated")]
+    partial class CarUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,6 +304,9 @@ namespace MiroAutoCenter.Data.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<Guid>("CarId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -320,10 +325,17 @@ namespace MiroAutoCenter.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<Guid>("ServiceStatusId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Time")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserMessage")
                         .HasMaxLength(500)
@@ -331,27 +343,13 @@ namespace MiroAutoCenter.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services");
-                });
-
-            modelBuilder.Entity("MiroAutoCenter.Data.Models.ServiceCar", b =>
-                {
-                    b.Property<Guid>("CarId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ServiceStatusId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CarId", "ServiceId");
-
-                    b.HasIndex("ServiceId");
+                    b.HasIndex("CarId");
 
                     b.HasIndex("ServiceStatusId");
 
-                    b.ToTable("ServicesCars");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.ServiceStatus", b =>
@@ -458,36 +456,36 @@ namespace MiroAutoCenter.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MiroAutoCenter.Data.Models.ServiceCar", b =>
+            modelBuilder.Entity("MiroAutoCenter.Data.Models.Service", b =>
                 {
                     b.HasOne("MiroAutoCenter.Data.Models.Car", "Car")
-                        .WithMany("ServicesCars")
+                        .WithMany("Services")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MiroAutoCenter.Data.Models.Service", "Service")
-                        .WithMany("ServicesCars")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MiroAutoCenter.Data.Models.ServiceStatus", "ServiceStatus")
-                        .WithMany("ServicesCars")
+                        .WithMany("Services")
                         .HasForeignKey("ServiceStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("MiroAutoCenter.Data.Models.WebsiteUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Car");
 
-                    b.Navigation("Service");
-
                     b.Navigation("ServiceStatus");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.Car", b =>
                 {
-                    b.Navigation("ServicesCars");
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.CarType", b =>
@@ -495,14 +493,9 @@ namespace MiroAutoCenter.Data.Migrations
                     b.Navigation("Cars");
                 });
 
-            modelBuilder.Entity("MiroAutoCenter.Data.Models.Service", b =>
-                {
-                    b.Navigation("ServicesCars");
-                });
-
             modelBuilder.Entity("MiroAutoCenter.Data.Models.ServiceStatus", b =>
                 {
-                    b.Navigation("ServicesCars");
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.WebsiteUser", b =>

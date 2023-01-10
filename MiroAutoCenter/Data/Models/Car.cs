@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MiroAutoCenter.Data.Models
 {
@@ -7,7 +8,7 @@ namespace MiroAutoCenter.Data.Models
         public Car()
         {
             this.Id = Guid.NewGuid();
-            this.Services = new HashSet<Service>();
+            this.ServicesCars = new HashSet<ServiceCar>();
         }
 
         [Key]
@@ -37,6 +38,11 @@ namespace MiroAutoCenter.Data.Models
         public Guid CarTypeId { get; set; }
         public CarType CarType { get; set; }
 
-        public IEnumerable<Service> Services { get; init; }
+        public IEnumerable<ServiceCar> ServicesCars { get; set; }
+        [Required]
+        public string UserId { get; set; }
+
+        [ForeignKey(nameof(UserId))]
+        public WebsiteUser User { get; set; }
     }
 }

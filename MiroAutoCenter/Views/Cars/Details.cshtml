@@ -16,7 +16,6 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">
-                    <i class="fas fa-bus-alt"></i>
                     Information
                 </h3>
             </div>
@@ -25,22 +24,19 @@
                     <dt class="col-sm-6">Make:</dt>
                     <dd class="col-sm-6">@Model.Make</dd>
                     <dt class="col-sm-6">Model:</dt>
-                    <dd class="col-sm-6">@Model.Make</dd>
+                    <dd class="col-sm-6">@Model.Model</dd>
                     <dt class="col-sm-6">Year of creation:</dt>
                     <dd class="col-sm-6">@Model.YearOfCreation</dd>
                     <dt class="col-sm-6">Plate number:</dt>
                     <dd class="col-sm-6">@Model.PlateNumber
                     <dt class="col-sm-6">Mileage:</dt>
                     <dd class="col-sm-6">@Model.Mileage
-                    <dt class="col-sm-6">Car Type:</dt>
-                    <dd class="col-sm-6">@Model.CarType</dd>
                 </dl>
             </div>
         </div>
     </div>
 
-    @if (this.User.IsInRole(UserConstants.Administrator))
-    {
+@*    @if (this.User.IsInRole(UserConstants.Administrator))*@
         <div class="col-md-4">
             <div class="card card-warning">
                 <div class="card-header">
@@ -54,5 +50,4 @@
                 </div>
             </div>
         </div>
-    }
 </div>

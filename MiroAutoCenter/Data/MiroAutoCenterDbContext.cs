@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MiroAutoCenter.Data.Models;
+using System.Reflection.Emit;
 
 namespace MiroAutoCenter.Data
 {
@@ -15,15 +16,30 @@ namespace MiroAutoCenter.Data
         public DbSet<CarType> CarTypes { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceStatus> ServiceStatuses { get; set; }
+        public DbSet<ServiceCar> ServicesCars { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
-              .Entity<Service>()
-              .HasOne(x => x.ServiceStatus)
-              .WithMany(x => x.Services)
-              .HasForeignKey(x => x.ServiceStatusId)
+              .Entity<ServiceCar>()
+              .HasOne(sc => sc.ServiceStatus)
+              .WithMany(sc => sc.ServicesCars)
+              .HasForeignKey(sc => sc.ServiceStatusId)
               .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<ServiceCar>()
+                .HasKey(sc => new { sc.CarId, sc.ServiceId });
+            builder
+                .Entity<ServiceCar>()
+                .HasOne(sc => sc.Car)
+                .WithMany(c => c.ServicesCars)
+                .HasForeignKey(sc => sc.CarId);
+            builder
+                .Entity<ServiceCar>()
+                .HasOne(sc => sc.Service)
+                .WithMany(s => s.ServicesCars)
+                .HasForeignKey(sc => sc.ServiceId);
 
             base.OnModelCreating(builder);
         }

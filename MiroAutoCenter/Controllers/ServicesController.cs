@@ -26,7 +26,7 @@ namespace MiroAutoCenter.Controllers
             return View(services);
         }
 
-        //[Authorize(Roles = UserConstants.Administrator)]
+        [Authorize(Roles = UserConstants.Administrator)]
         [Authorize]
         public IActionResult Add()
         {
@@ -34,7 +34,7 @@ namespace MiroAutoCenter.Controllers
         }
 
         [HttpPost]
-        //[Authorize(Roles = UserConstants.Administrator)]
+        [Authorize(Roles = UserConstants.Administrator)]
         [Authorize]
         public IActionResult Add(ServiceAddFormModel service)
         {

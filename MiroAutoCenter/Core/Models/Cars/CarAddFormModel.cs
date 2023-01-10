@@ -29,7 +29,8 @@ namespace MiroAutoCenter.Core.Models.Cars
         [Range(0, 500000, ErrorMessage = "{0} can be between {1} and {2}")]
         [Display(Name = "Mileage")]
         public int Mileage { get; set; }
-
+        [Required(ErrorMessage = "{0} is a required field.")]
+        [Display(Name = "Car Type")]
         public Guid CarTypeId { get; set; }
         [Required]
         public IEnumerable<CarCarTypeViewModel> CarTypes { get; set; }

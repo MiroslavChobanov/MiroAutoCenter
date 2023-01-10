@@ -2,9 +2,12 @@
 @model IEnumerable<CarsListingModel>
 
 @{
-    ViewBag.Title = "Cars";
+    ViewBag.Title = "My Cars";
 }
-
+<div>
+    <a class="btn btn-primary" asp-area="" asp-controller="Cars" asp-action="Add">Add cars</a>
+</div>
+    
 @if (!Model.Any())
 {
     <h2 class="text-center">No cars yet!</h2>

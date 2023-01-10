@@ -12,8 +12,5 @@ namespace MiroAutoCenter.Core.Models.Cars
         public bool IsDeleted { get; set; }
         public string PlateNumber { get; set; }
         public int Mileage { get; set; }
-
-        public Guid CarTypeId { get; set; }
-        public CarType CarType { get; set; }
     }
 }

@@ -1,8 +1,16 @@
 ﻿@using MiroAutoCenter.Core.Models.Services
 @model IEnumerable<ServicesListingModel>
-
+@using Microsoft.AspNetCore.Identity
+@using MiroAutoCenter.Core.Constants
+@using MiroAutoCenter.Data.Models
+@inject SignInManager<WebsiteUser> SignInManager
+@inject UserManager<WebsiteUser> UserManager
 @{
     ViewBag.Title = "Services";
+}
+@if (this.User.IsInRole(UserConstants.Administrator))
+{
+    <a class="btn btn-primary" asp-area="" asp-controller="Services" asp-action="Add">Add services</a>
 }
 
 @if (!Model.Any())
@@ -28,6 +36,7 @@ else
                                             <th tabindex="0" rowspan="1" colspan="1">Description</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Price</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Type</th>
+                                            <th tabindex="0" rowspan="1" colspan="1"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,6 +47,7 @@ else
                                                 <td>@service.Description</td>
                                                 <td>@service.Price</td>
                                                 <td>@service.Time</td>
+                                                <td><a class="btn btn-primary">Make appointment</a></td>
                                             </tr>
                                         }
                                     </tbody>

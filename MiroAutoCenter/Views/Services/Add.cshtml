@@ -29,14 +29,16 @@
                         <input asp-for="Price" class="form-control" placeholder="Add price here...">
                         <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group">
                         <label asp-for="Time" class="control-label"></label>
-                        <input asp-for="Time" class="form-control" value="">
+                        <input asp-for="Time" class="form-control" placeholder="Add time here...">
                         <span asp-validation-for="Time" class="text-danger"></span>
                     <div class="card-body">
                         <a asp-controller="Services" asp-action="All" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-primary float-right">Add</button>
                     </div>
+                 </div>
+                </div>
             </form>
         </div>
     </div>
