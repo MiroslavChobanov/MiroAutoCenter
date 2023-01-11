@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MiroAutoCenter.Core.Constants;
 using MiroAutoCenter.Core.Contracts;
+using MiroAutoCenter.Core.Extensions;
+using MiroAutoCenter.Core.Models.Admin;
 
 namespace MiroAutoCenter.Controllers
 {
@@ -38,5 +40,51 @@ namespace MiroAutoCenter.Controllers
 
         //    return Ok();
         //}
+
+        [Authorize(Roles = $"{UserConstants.Administrator}")]
+        public IActionResult ApproveServices(int p = 1, int s = 10)
+        {
+            var loggedUserId = this.users.IdByUser(this.User.Id());
+
+            if (loggedUserId == null)
+            {
+                TempData[MessageConstants.ErrorMessage] = "An error occurred!";
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+
+            var allMyServicesForm = this.admins.AllPendingServices(p, s);
+
+            return View(allMyServicesForm);
+        }
+
+        [Authorize(Roles = $"{UserConstants.Administrator}")]
+        public IActionResult Approve(Guid id, AdminApproveDisapproveServiceModel service)
+        {
+
+            var approved = this.admins.Approve(id);
+
+            if (!approved)
+            {
+                return BadRequest();
+            }
+
+            TempData[MessageConstants.SuccessMessage] = "Successfully approved the appointment.";
+            return RedirectToAction("ApproveServices");
+        }
+
+        [Authorize(Roles = $"{UserConstants.Administrator}")]
+        public IActionResult Disapprove(Guid id, AdminApproveDisapproveServiceModel service)
+        {
+
+            var disapproved = this.admins.Disapprove(id);
+
+            if (!disapproved)
+            {
+                return BadRequest();
+            }
+
+            TempData[MessageConstants.SuccessMessage] = "Successfully rejected the appointment.";
+            return RedirectToAction("ApproveServices");
+        }
     }
 }

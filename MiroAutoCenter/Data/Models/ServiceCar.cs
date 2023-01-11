@@ -5,6 +5,14 @@ namespace MiroAutoCenter.Data.Models
 {
     public class ServiceCar
     {
+        public ServiceCar()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
+        [Key]
+        [Required]
+        public Guid Id { get; set; }
         public Guid CarId { get; set; }
         public Car Car { get; set; }
         public Guid ServiceId { get; set; }
@@ -15,5 +23,7 @@ namespace MiroAutoCenter.Data.Models
 
         [ForeignKey(nameof(ServiceStatusId))]
         public ServiceStatus ServiceStatus { get; set; }
+
+        public DateTime Time { get; set; }
     }
 }

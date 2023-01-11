@@ -27,5 +27,7 @@ namespace MiroAutoCenter.Core.Contracts
         public ServiceDeleteModel DeleteViewData(Guid id);
 
         public ServiceAddFormModel EditViewData(Guid id);
+
+        public Guid CreateAppointment(Guid serviceId, Guid carId, DateTime time);
     }
 }

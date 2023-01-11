@@ -36,10 +36,9 @@ namespace MiroAutoCenter.Data.Models
         [StringLength(500)]
         public string? AdminMessage { get; set; }
 
-        
-
         public bool IsApproved { get; set; }
 
-        public IEnumerable<ServiceCar> ServicesCars { get; set; } 
+        public IEnumerable<ServiceCar> ServicesCars { get; set; }
+
     }
 }

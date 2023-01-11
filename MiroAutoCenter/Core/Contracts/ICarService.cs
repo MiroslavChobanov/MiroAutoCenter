@@ -38,5 +38,7 @@ namespace MiroAutoCenter.Core.Contracts
         public CarAddFormModel EditViewData(Guid id);
 
         IEnumerable<CarsListingModel> ByUser(string userId);
+
+        public Guid IdByUser(string userId);
     }
 }

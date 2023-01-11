@@ -1,0 +1,48 @@
+﻿@using MiroAutoCenter.Core.Models.Admin
+@model AdminPendingServicesPaginationModel
+
+@{
+    ViewBag.Title = $"Services waiting approval";
+}
+
+@if (!Model.AllPendingServices.Any())
+{
+    <div class="card-body text-center">
+        <h3 class="text-center">No services waiting for approval.</h3>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="timeline">
+                @foreach (var service in Model.AllPendingServices)
+                {
+                    <div>
+                        <i class="fa fa-image"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-clock"></i> @service.Time.ToString("f")</span>
+                            <div class="row timeline-body">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-1 align-middle text-center">
+                                                <a asp-controller="Admin" asp-action="Approve" asp-route-id="@service.Id" class="btn btn-success">Approve</a><br /><br />
+                                                <a asp-controller="Admin" asp-action="Disapprove" asp-route-id="@service.Id" class="btn btn-danger">Disapprove</a><br /><br />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <paging page-no="Model.PageNo"
+                page-size="Model.PageSize"
+                total-records="Model.TotalRecords"
+                page-size-dropdown-items="5-10-25">
+            </paging>
+        </div>
+    </div>
+}

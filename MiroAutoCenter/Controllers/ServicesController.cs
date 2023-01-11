@@ -5,6 +5,9 @@ using MiroAutoCenter.Core.Contracts;
 using MiroAutoCenter.Core.Extensions;
 using MiroAutoCenter.Core.Models.Cars;
 using MiroAutoCenter.Core.Models.Services;
+using MiroAutoCenter.Core.Models.ServicesCars;
+using MiroAutoCenter.Data;
+using MiroAutoCenter.Data.Models;
 using System.Data;
 
 namespace MiroAutoCenter.Controllers
@@ -13,10 +16,14 @@ namespace MiroAutoCenter.Controllers
     {
         private readonly IServiceService services;
         private readonly IUserService users;
-        public ServicesController(IServiceService services, IUserService users)
+        private readonly ICarService cars;
+        private readonly MiroAutoCenterDbContext data;
+        public ServicesController(IServiceService services, IUserService users, ICarService cars, MiroAutoCenterDbContext data)
         {
             this.services = services;
             this.users = users;
+            this.cars = cars;
+            this.data = data;
         }
 
         public IActionResult All()
@@ -148,6 +155,37 @@ namespace MiroAutoCenter.Controllers
             }
 
             TempData[MessageConstants.SuccessMessage] = "Service has been successfully deleted.";
+            return RedirectToAction("All");
+        }
+
+        [Authorize]
+        public IActionResult CreateAppointment(Guid id)
+        {
+            return View(new ServiceCarAddFormModel
+            {
+                UserCars = this.cars.ByUser(this.User.Id())
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult CreateAppointment(Guid id, ServiceCarAddFormModel serviceCar)
+        {
+            var userId = this.users.IdByUser(this.User.Id());
+
+            if (userId == null)
+            {
+                TempData[MessageConstants.ErrorMessage] = "An error occurred!";
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+
+            var serviceId = this.services.CreateAppointment(
+                id,
+                serviceCar.CarId,
+                serviceCar.Time
+                );
+
+            TempData[MessageConstants.SuccessMessage] = "Successful request for an appointment.";
             return RedirectToAction("All");
         }
     }

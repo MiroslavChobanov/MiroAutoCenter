@@ -131,5 +131,27 @@ namespace MiroAutoCenter.Core.Services
                 })
                 .First();
         }
+
+        public Guid CreateAppointment(Guid serviceId, Guid carId, DateTime time)
+        {
+
+            var serviceStatusId = this.data.ServiceStatuses
+                .Where(ss => ss.StatusDescription == "Waiting for approval")
+                .Select(ss => ss.Id)
+                .First();
+
+            var newAppointment = new ServiceCar
+            {
+                ServiceId = serviceId,
+                CarId = carId,
+                ServiceStatusId = serviceStatusId,
+                Time = time
+            };
+
+            this.data.ServicesCars.Add(newAppointment);
+            this.data.SaveChanges();
+
+            return newAppointment.Id;
+        }
     }
 }

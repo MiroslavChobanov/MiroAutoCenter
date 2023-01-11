@@ -187,5 +187,14 @@ namespace MiroAutoCenter.Core.Services
                 })
                 .ToList();
         }
+
+        public Guid IdByUser(string userId)
+        {
+            return this.data
+                .Cars
+                .Where(c => c.UserId == userId)
+                .Select(c => c.Id)
+                .FirstOrDefault();
+        }
     }
 }

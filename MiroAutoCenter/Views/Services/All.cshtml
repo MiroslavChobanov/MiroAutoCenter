@@ -37,6 +37,7 @@ else
                                             <th tabindex="0" rowspan="1" colspan="1">Price</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Type</th>
                                             <th tabindex="0" rowspan="1" colspan="1"></th>
+                                            <th tabindex="0" rowspan="1" colspan="1"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -47,7 +48,15 @@ else
                                                 <td>@service.Description</td>
                                                 <td>@service.Price</td>
                                                 <td>@service.Time</td>
-                                                <td><a class="btn btn-primary">Make appointment</a></td>
+                                                @if (!this.User.IsInRole(UserConstants.Administrator))
+                                                {
+                                                    <td><a class="btn btn-primary" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a></td>
+                                                }
+                                                else
+                                                {
+                                                    <td><a class="btn btn-primary" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a></td>
+                                                    <td><a class="btn btn-primary" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Delete</a></td>
+                                                }
                                             </tr>
                                         }
                                     </tbody>

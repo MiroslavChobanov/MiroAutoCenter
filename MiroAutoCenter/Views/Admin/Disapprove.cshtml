@@ -1,0 +1,31 @@
+﻿@using MiroAutoCenter.Core.Models.Admin
+@model AdminApproveDisapproveServiceModel
+
+@{
+    ViewData["Title"] = "Disapprove service";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Are you sure you want to reject this appointment?</h3>
+            </div>
+            <form method="post">
+                <div class="card-body">
+                    <div class="form-group text-center">
+                        <h3 class="text-center" asp-for="Title">@Model.Time</h3><br>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a asp-controller="Admin" asp-action="ApproveServices" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger float-right">Disapprove</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
