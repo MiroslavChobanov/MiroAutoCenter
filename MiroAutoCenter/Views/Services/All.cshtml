@@ -8,10 +8,10 @@
 @{
     ViewBag.Title = "Services";
 }
-@if (this.User.IsInRole(UserConstants.Administrator))
+@*@if (this.User.IsInRole(UserConstants.Administrator))
 {
     <a class="btn btn-primary" asp-area="" asp-controller="Services" asp-action="Add">Add services</a>
-}
+}*@
 
 @if (!Model.Any())
 {
@@ -19,7 +19,7 @@
 }
 else
 {
-    <input type="text" id="myInput" onkeyup="searchServices()" placeholder="Search for services.." title="Type in a name">
+    @*<input type="text" id="myInput" onkeyup="searchServices()" placeholder="Search for services.." title="Type in a name">
     <div class="row">
         <div class="col-12">
             <div class="card card-primary">
@@ -37,8 +37,19 @@ else
                                             <th tabindex="0" rowspan="1" colspan="1">Description</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Price</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Type</th>
-                                            <th tabindex="0" rowspan="1" colspan="1"></th>
-                                            <th tabindex="0" rowspan="1" colspan="1"></th>
+                                            @if (!this.User.IsInRole(UserConstants.Administrator))
+                                            {
+                                                @if (SignInManager.IsSignedIn(User))
+                                                {
+                                                    <th tabindex="0" rowspan="1" colspan="1"></th>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <th tabindex="0" rowspan="1" colspan="1"></th>
+                                                <th tabindex="0" rowspan="1" colspan="1"></th>
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,8 +62,11 @@ else
                                                 <td>@service.Time</td>
                                                 @if (!this.User.IsInRole(UserConstants.Administrator))
                                                 {
-                                                    <td><a class="btn btn-primary" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a></td>
-                                                }
+                                                    @if (SignInManager.IsSignedIn(User))
+                                                    {
+                                                        <td><a class="btn btn-primary" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a></td>
+                                                    }
+                                                    }
                                                 else
                                                 {
                                                     <td><a class="btn btn-primary" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a></td>
@@ -70,8 +84,33 @@ else
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
+        
+    @foreach (var service in Model)
+    {
+    <div class="card" id="service-card" style="width: 18rem;">
+  <div class="card-body">
+                <p class="card-title" id="service-title">@service.Name</p>
+                <p class="card-text" id="service-text">@service.Description</p>
+                <p>Price: @service.Price</p>
+                <p>Duration: @service.Time</p>
+                @if (!this.User.IsInRole(UserConstants.Administrator))
+                {
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a class="btn btn-primary" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a>
+                    }
+                }
+                else
+                {
+                    <a class="btn btn-primary" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a>
+                    <a class="btn btn-primary" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Delete</a>
+                }
+  </div>
+</div>
+    }
 }
+
 <script>
     function searchServices() {
         console.log("works");
@@ -93,5 +132,4 @@ else
         }
     }
 </script>
-
 

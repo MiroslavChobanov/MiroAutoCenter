@@ -31,3 +31,27 @@ body {
     margin-bottom: 12px;
     border-radius: 10px 10px;
 }
+
+#service-title {
+    font-size: 30px;
+    margin-bottom: 35px;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%,0%);
+}
+
+#service-text {
+    font-size: 16px;
+    color: grey;
+    margin-top: 150px;
+}
+
+#service-card {
+    display: inline-block;
+    width: 400px;
+    height: 350px;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 10px 10px;
+    text-align: center;
+}
