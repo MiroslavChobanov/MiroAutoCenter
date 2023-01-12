@@ -20,3 +20,14 @@ body {
 .container px-4 px-lg-5 {
     background-image: url("https://assets.porsche.com/-/media/Project/DealerWebsites/SaudiArabia/Riyadh/Offers-Teaser/PME-AS-22-145_Service-Clinic-Campaign-KSA_Website_Teaser_image_1920x1440px.jpg?rev=ab823375d5dd4480b404365be6021bc2");
 }
+
+#myInput {
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    border-radius: 10px 10px;
+}
