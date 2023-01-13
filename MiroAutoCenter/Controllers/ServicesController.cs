@@ -26,11 +26,15 @@ namespace MiroAutoCenter.Controllers
             this.data = data;
         }
 
-        public IActionResult All()
+        public IActionResult All(int p = 1, int s = 10)
         {
-            var services = this.services.All();
+            //var services = this.services.All();
 
-            return View(services);
+            //return View(services);
+
+            var allMyServicesForm = this.services.AllServices(p, s);
+
+            return View(allMyServicesForm);
         }
 
         [Authorize(Roles = UserConstants.Administrator)]

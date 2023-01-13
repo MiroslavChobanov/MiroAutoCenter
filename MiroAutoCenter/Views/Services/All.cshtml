@@ -1,5 +1,5 @@
 ﻿@using MiroAutoCenter.Core.Models.Services
-@model IEnumerable<ServicesListingModel>
+@model ServicesPaginationModel
 @using Microsoft.AspNetCore.Identity
 @using MiroAutoCenter.Core.Constants
 @using MiroAutoCenter.Data.Models
@@ -13,7 +13,7 @@
     <a class="btn btn-primary" asp-area="" asp-controller="Services" asp-action="Add">Add services</a>
 }*@
 
-@if (!Model.Any())
+@if (!Model.AllServices.Any())
 {
     <h2 class="text-center">No services yet!</h2>
 }
@@ -87,7 +87,7 @@ else
     </div>*@
         <input type="text" id="myInput" onkeyup="searchServices()" placeholder="Search for services..." title="Type in a name">
         <br />
-    @foreach (var service in Model)
+    @foreach (var service in Model.AllServices)
     {
     <div class="card" id="service-card">
   <div class="card-body">
@@ -112,6 +112,11 @@ else
   </div>
 </div>
     }
+    <paging page-no="Model.PageNo"
+        page-size="Model.PageSize"
+        total-records="Model.TotalRecords"
+        page-size-dropdown-items="5-10-25">
+    </paging>
 }
 
 <script>

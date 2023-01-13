@@ -1,4 +1,5 @@
 ﻿using MiroAutoCenter.Core.Contracts;
+using MiroAutoCenter.Core.Models.Admin;
 using MiroAutoCenter.Core.Models.Cars;
 using MiroAutoCenter.Core.Models.Services;
 using MiroAutoCenter.Data;
@@ -152,6 +153,31 @@ namespace MiroAutoCenter.Core.Services
             this.data.SaveChanges();
 
             return newAppointment.Id;
+        }
+        public ServicesPaginationModel AllServices(int pageNo, int pageSize)
+        {
+            ServicesPaginationModel result = new ServicesPaginationModel()
+            {
+                PageNo = pageNo,
+                PageSize = pageSize
+            };
+
+            result.TotalRecords = this.data.Services.Count();
+            result.AllServices = this.data.Services
+                .Where(x => !x.IsDeleted)
+                .Select(x => new ServicesListingModel
+                {
+                    Id = x.Id,
+                    Name= x.Name,
+                    Description = x.Description,
+                    Price = x.Price,
+                    Time = x.Time
+                })
+                 .Skip(pageNo * pageSize - pageSize)
+                 .Take(pageSize)
+                 .ToList();
+
+            return result;
         }
     }
 }

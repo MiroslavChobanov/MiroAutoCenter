@@ -29,5 +29,7 @@ namespace MiroAutoCenter.Core.Contracts
         public ServiceAddFormModel EditViewData(Guid id);
 
         public Guid CreateAppointment(Guid serviceId, Guid carId, DateTime time);
+
+        public ServicesPaginationModel AllServices(int pageNo, int pageSize);
     }
 }
