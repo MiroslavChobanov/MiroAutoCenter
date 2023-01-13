@@ -85,26 +85,29 @@ else
             </div>
         </div>
     </div>*@
-        
+        <input type="text" id="myInput" onkeyup="searchServices()" placeholder="Search for services..." title="Type in a name">
+        <br />
     @foreach (var service in Model)
     {
-    <div class="card" id="service-card" style="width: 18rem;">
+    <div class="card" id="service-card">
   <div class="card-body">
-                <p class="card-title" id="service-title">@service.Name</p>
+                <img id="tools" src="~/img/tools.png">
+                <p class="service-title" id="service-title">@service.Name</p>
                 <p class="card-text" id="service-text">@service.Description</p>
-                <p>Price: @service.Price</p>
-                <p>Duration: @service.Time</p>
+                <p id="service-price">Price: @service.Price</p>
+                <p id="service-duration">Duration:
+                    <br>@service.Time</p>
                 @if (!this.User.IsInRole(UserConstants.Administrator))
                 {
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <a class="btn btn-primary" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a>
+                        <a class="appoint-btn" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a>
                     }
                 }
                 else
                 {
-                    <a class="btn btn-primary" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a>
-                    <a class="btn btn-primary" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Delete</a>
+                    <a class="edit-btn" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a>
+                    <a class="delete-btn" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Delete</a>
                 }
   </div>
 </div>
@@ -114,19 +117,18 @@ else
 <script>
     function searchServices() {
         console.log("works");
-        var input, filter, table, tr, td, i, txtValue;
+        var input, filter, table, tr, td, i, txtValue, cards, titles, title;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
-        table = document.getElementById("example");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
+        cards = document.getElementsByClassName("card");
+        for (i = 0; i < cards.length; i++) {
+            title = cards[i].getElementsByClassName("service-title")[0];
+            if (title) {
+                txtValue = title.textContent || title.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
+                    cards[i].style.display = "";
                 } else {
-                    tr[i].style.display = "none";
+                    cards[i].style.display = "none";
                 }
             }
         }

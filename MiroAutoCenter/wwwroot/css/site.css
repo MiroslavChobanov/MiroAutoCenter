@@ -24,34 +24,113 @@ body {
 #myInput {
     background-position: 10px 12px;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 25%;
+    float: right;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
-    margin-bottom: 12px;
     border-radius: 10px 10px;
+    position: absolute;
 }
 
 #service-title {
     font-size: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 35px;
     position: absolute;
     right: 50%;
     transform: translate(50%,0%);
+    max-width: 100%;
 }
 
 #service-text {
     font-size: 16px;
-    color: grey;
     margin-top: 150px;
 }
 
 #service-card {
     display: inline-block;
-    width: 400px;
+    width: 18rem;
     height: 350px;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-top: 7%;
+    margin-left: 3%;
+    margin-right: 3%;
     border-radius: 10px 10px;
     text-align: center;
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+    color: #fff;
+
+}
+
+#service-price {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 15px;
+    max-width: 65px;
+}
+
+#service-duration {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 15px;
+    max-width: 100px;
+}
+
+.appoint-btn {
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+}
+
+.edit-btn, .delete-btn {
+    background: radial-gradient(circle at 18.7% 37.8%, rgb(250, 250, 250) 0%, rgb(225, 234, 238) 90%);
+    border-radius: 30px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    color: black;
+}
+
+.appoint-btn:hover {
+    color: black;
+}
+
+#tools{
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    position: absolute;
+    margin-left: 15px;
+    margin-top: 15px;
 }
