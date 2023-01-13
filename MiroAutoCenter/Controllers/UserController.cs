@@ -32,5 +32,14 @@ namespace MiroAutoCenter.Controllers
         {
             return View();
         }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
     }
 }

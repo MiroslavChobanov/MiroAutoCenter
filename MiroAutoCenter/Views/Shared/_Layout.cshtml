@@ -58,13 +58,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="MyCars">My cars</a>
                             </li>
                         }
-                        
-                        <li class="nav-item dropdown">
-                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">More options</a>
-                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="All">Contacts</a>
-                            </ul>
-                        </li>
+                        @if (!this.User.IsInRole(UserConstants.Administrator))
+                        {
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="About">About</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Contact">Contact us</a>
+                            </li>
+
+                        }
                     </ul>
 
                    

@@ -134,3 +134,15 @@ body {
     margin-left: 15px;
     margin-top: 15px;
 }
+
+#contact-section{
+    display: flex;
+
+}
+
+#contact-us {
+    background-color: #3447d6;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+}
