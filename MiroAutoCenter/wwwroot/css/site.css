@@ -135,14 +135,84 @@ body {
     margin-top: 15px;
 }
 
-#contact-section{
-    display: flex;
+/* About page CSS */
 
+.about-page-text{
+    font-size: 20px;
+    margin-left: 5%
 }
 
-#contact-us {
-    background-color: #3447d6;
-    color: #fff;
+.about-page-section{
+    width:100%;
     display: flex;
     flex-direction: row;
+}
+
+.about-page-image, .about-page-text{
+    width: 47%;
+}
+
+.about-page-image img{
+    max-width: 100%;
+    margin-right: 1%;
+    background-color: #fff
+}
+
+/* Contact page CSS */
+
+.contact-text {
+    font-size: 20px;
+    margin-left: 5%;
+    background: radial-gradient(590px at 8.2% 13.8%, rgb(18, 35, 60) 0%, rgb(187, 187, 187) 180%);
+    color: #fff;
+    border-radius: 20px 20px;
+}
+
+.contact-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-image, .contact-text {
+    width: 47%;
+}
+
+.contact-image img {
+    max-width: 100%;
+    margin-right: 1%;
+    background-color: #fff
+}
+
+.contact-text div{
+    display: flex;
+    margin-bottom: 5%;
+    height: 25%;
+    margin-left: 17%;
+}
+
+.contact-icons{
+    height: 60px;
+    width: 60px;
+}
+
+.contact-text div span{
+    margin-right: 5%;
+}
+
+.email-container{
+    margin-top: 10%;
+}
+
+.contact-text div span {
+    margin-top: 4%;
+}
+
+.contact-text-title {
+    margin-left: 32%;
+    margin-top: 3%;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 40%;
 }
