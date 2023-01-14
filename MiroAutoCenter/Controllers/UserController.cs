@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MiroAutoCenter.Core.Contracts;
+using MiroAutoCenter.Core.Extensions;
 
 namespace MiroAutoCenter.Controllers
 {
@@ -40,6 +41,42 @@ namespace MiroAutoCenter.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        [Authorize]
+        public IActionResult ApprovedAppointments()
+        {
+            var approvedAppts = this.users.UserApproved(this.User.Id());
+
+            var filteredAppts = approvedAppts
+                .Where(aa => aa.Time.Date > DateTime.UtcNow.Date)
+                .ToList();
+
+            return View(filteredAppts);
+        }
+
+        [Authorize]
+        public IActionResult RejectedAppointments()
+        {
+            var rejectedAppts = this.users.UserRejected(this.User.Id());
+
+            var filteredAppts = rejectedAppts
+                .Where(aa => aa.Time.Date > DateTime.UtcNow.Date)
+                .ToList();
+
+            return View(filteredAppts);
+        }
+
+        [Authorize]
+        public IActionResult WaitingForApproval()
+        {
+            var waitingAppts = this.users.UserWaiting(this.User.Id());
+
+            var filteredAppts = waitingAppts
+                .Where(aa => aa.Time.Date > DateTime.UtcNow.Date)
+                .ToList();
+
+            return View(filteredAppts);
         }
     }
 }

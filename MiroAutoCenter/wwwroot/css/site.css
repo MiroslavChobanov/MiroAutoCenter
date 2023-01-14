@@ -31,6 +31,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 10px 10px;
     position: absolute;
+    margin-bottom: 20px;
 }
 
 #service-title {
@@ -215,4 +216,16 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     width: 40%;
+}
+
+.pagination{
+    margin-top: 50px;
+}
+
+#dropdownSubMenu1{
+    color: black;
+}
+
+.font-weight-light{
+    font-weight: 600!important;
 }

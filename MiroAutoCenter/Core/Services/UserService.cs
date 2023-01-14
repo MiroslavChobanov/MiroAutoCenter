@@ -1,11 +1,9 @@
-﻿using MiroAutoCenter.Core.Contracts;
+﻿using Microsoft.AspNetCore.Server.IIS.Core;
+using MiroAutoCenter.Core.Contracts;
+using MiroAutoCenter.Core.Models.Cars;
 using MiroAutoCenter.Core.Models.Users;
 using MiroAutoCenter.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MiroAutoCenter.Data.Models;
 
 namespace MiroAutoCenter.Core.Services
 {
@@ -38,6 +36,63 @@ namespace MiroAutoCenter.Core.Services
                     Role = this.data.Roles.First(x => x.Id == this.data.UserRoles.First(x => x.UserId == id).RoleId).Name
                 })
                 .First();
+        }
+
+        public IEnumerable<AppointmentModel> UserApproved(string userId)
+        {
+
+            return GetApproved(this.data
+                .ServicesCars
+                .Where(c => c.Car.UserId == userId));
+        }
+
+        private IEnumerable<AppointmentModel> GetApproved(IQueryable<ServiceCar> apptQuery)
+        {
+            return apptQuery
+                .Where(a => a.ServiceStatus.ClassColor == "table-success")
+                .Select(a => new AppointmentModel
+                {
+                    Time= a.Time,
+                })
+                .ToList();
+        }
+
+        public IEnumerable<AppointmentModel> UserRejected(string userId)
+        {
+
+            return GetRejected(this.data
+                .ServicesCars
+                .Where(c => c.Car.UserId == userId));
+        }
+
+        private IEnumerable<AppointmentModel> GetRejected(IQueryable<ServiceCar> apptQuery)
+        {
+            return apptQuery
+                .Where(a => a.ServiceStatus.ClassColor == "table-danger")
+                .Select(a => new AppointmentModel
+                {
+                    Time = a.Time,
+                })
+                .ToList();
+        }
+
+        public IEnumerable<AppointmentModel> UserWaiting(string userId)
+        {
+
+            return GetWaiting(this.data
+                .ServicesCars
+                .Where(c => c.Car.UserId == userId));
+        }
+
+        private IEnumerable<AppointmentModel> GetWaiting(IQueryable<ServiceCar> apptQuery)
+        {
+            return apptQuery
+                .Where(a => a.ServiceStatus.ClassColor == "table-warning")
+                .Select(a => new AppointmentModel
+                {
+                    Time = a.Time,
+                })
+                .ToList();
         }
 
     }
