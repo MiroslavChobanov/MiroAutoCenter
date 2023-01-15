@@ -390,3 +390,12 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+.home-page-container {
+    width: 100%;
+    height: 100%;
+}
+
+.home-page-container img{
+    width: 90%;
+}
