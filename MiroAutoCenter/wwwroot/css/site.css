@@ -284,6 +284,7 @@ body {
 .button-84:hover {
     box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
     opacity: .85;
+    color: #fff;
 }
 
 .button-84:active {
@@ -295,7 +296,7 @@ body {
 }
 
 .cars-table-header {
-    background: linear-gradient(109.6deg, rgb(6, 2, 2) 32.4%, rgb(137, 30, 47) 46%);
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
     color: #fff;
     text-align: center;
     padding: 25px 0px 15px 0px;
@@ -303,12 +304,17 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+    border: unset;
+}
+#add-cars-table{
+    border: unset;
 }
 
 #cars-first-row th {
-    background: linear-gradient(74.3deg, rgb(68, 17, 28) 17.4%, rgb(95, 24, 40) 34.7%, rgb(122, 31, 51) 51.8%, rgb(149, 38, 62) 67.4%, rgb(163, 41, 68) 89.6%);
-    color: #fff;
+    background: #fff;
+    color: black;
     font-size: 20px;
+    border: unset;
 }
 
 .cars-rows td {
@@ -400,10 +406,7 @@ body {
     width: 90%;
 }
 
-#appts {
-    text-align: center;
-    background: linear-gradient(179deg, rgb(255, 129, 27) -27.5%, rgb(245, 255, 56) 94.7%);
-}
+
 
 #appts h3{
     margin-top: 10px;
@@ -440,8 +443,13 @@ body {
     background: radial-gradient(circle at 10.6% 22.1%, rgb(206, 18, 18) 0%, rgb(122, 21, 21) 100.7%);
 }
 
+#appts {
+    text-align: center;
+    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+}
+
 #user-email {
-    background: linear-gradient(179deg, rgb(255, 129, 27) -27.5%, rgb(245, 255, 56) 130%);
+    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
 #user-email h3{
@@ -593,3 +601,21 @@ body {
     margin-top: 5%;
     font-size: 16px;
 }
+
+.timeline-item h3, .timeline-item h5{
+    font-weight: 600;
+    margin-left: 10px;
+    color: black;
+}
+
+.timeline-item span{
+    float: right;
+    position: relative;
+    top: -35px;
+    padding: 5px;
+}
+
+.timeline-item{
+    padding: 10px!important;
+}
+

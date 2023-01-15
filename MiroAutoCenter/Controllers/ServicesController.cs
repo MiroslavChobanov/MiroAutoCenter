@@ -165,9 +165,12 @@ namespace MiroAutoCenter.Controllers
         [Authorize]
         public IActionResult CreateAppointment(Guid id)
         {
+            var dateFormatted = DateTime.Now.ToString("g");
+
             return View(new ServiceCarAddFormModel
             {
-                UserCars = this.cars.ByUser(this.User.Id())
+                UserCars = this.cars.ByUser(this.User.Id()),
+                Time = DateTime.Parse(dateFormatted)
             });
         }
 

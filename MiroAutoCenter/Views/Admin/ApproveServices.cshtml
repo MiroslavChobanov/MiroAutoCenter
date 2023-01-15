@@ -19,21 +19,13 @@ else
                 @foreach (var service in Model.AllPendingServices)
                 {
                     <div>
-                        <i class="fa fa-image"></i>
+                        <i class="fa fa-wrench"></i>
                         <div class="timeline-item">
-                            <span class="time"><i class="fa fa-clock"></i> @service.Time.ToString("f")</span>
-                            <div class="row timeline-body">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-1 align-middle text-center">
-                                                <a asp-controller="Admin" asp-action="Approve" asp-route-id="@service.Id" class="btn btn-success">Approve</a><br /><br />
-                                                <a asp-controller="Admin" asp-action="Disapprove" asp-route-id="@service.Id" class="btn btn-danger">Disapprove</a><br /><br />
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h3>@service.ServiceType</h3>
+                            <h5>@service.CarMake</h5>
+                            <h5>@service.Time</h5>
+                            <span><a asp-controller="Admin" asp-action="Approve" asp-route-id="@service.Id" class="btn btn-success">Approve</a><br /></span>
+                            <span><a asp-controller="Admin" asp-action="Disapprove" asp-route-id="@service.Id" class="btn btn-danger">Disapprove</a></span>
                         </div>
                     </div>
                 }

@@ -52,7 +52,9 @@ namespace MiroAutoCenter.Core.Services
                 .Where(a => a.ServiceStatus.ClassColor == "table-success")
                 .Select(a => new AppointmentModel
                 {
-                    Time= a.Time,
+                    Time = a.Time,
+                    ServiceName = a.Service.Name,
+                    CarModel = a.Car.Make
                 })
                 .ToList();
         }
@@ -72,6 +74,8 @@ namespace MiroAutoCenter.Core.Services
                 .Select(a => new AppointmentModel
                 {
                     Time = a.Time,
+                    ServiceName = a.Service.Name,
+                    CarModel = a.Car.Make
                 })
                 .ToList();
         }
@@ -91,6 +95,8 @@ namespace MiroAutoCenter.Core.Services
                 .Select(a => new AppointmentModel
                 {
                     Time = a.Time,
+                    ServiceName = a.Service.Name,
+                    CarModel = a.Car.Make
                 })
                 .ToList();
         }

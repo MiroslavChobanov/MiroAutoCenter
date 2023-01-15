@@ -33,7 +33,9 @@ namespace MiroAutoCenter.Core.Services
                 .Select(x => new AdminAllPendingServicesModel
                 {
                     Id = x.Id,
-                    Time= x.Time
+                    Time = x.Time,
+                    ServiceType = x.Service.Name,
+                    CarMake = x.Car.Make
                 })
                  .Skip(pageNo * pageSize - pageSize)
                  .Take(pageSize)

@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="~/css/adminlte.min.css" asp-append-version="true">
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
@@ -57,8 +58,10 @@
 
         </div>
       </form>
-
-      <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">I already have an account./</a>
+      <p class="after-register">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">I already have an account./</a>
+                </p>
+      
 
     </div>
 

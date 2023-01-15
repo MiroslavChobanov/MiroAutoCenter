@@ -1,5 +1,6 @@
 ﻿using MiroAutoCenter.Core.Models.Cars;
 using MiroAutoCenter.Data.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MiroAutoCenter.Core.Models.ServicesCars
