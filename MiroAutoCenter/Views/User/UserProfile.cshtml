@@ -47,43 +47,45 @@
                     </div>
                 }
             </div>
+            @if (!this.User.IsInRole(UserConstants.Administrator))
+            {
+                <div class="col-md-9">
+                    <div class="card">
+                        <h3>Appointments:</h3>
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="ApprovedAppointments">Approved</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="WaitingForApproval">Waiting for approval</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="RejectedAppointments">Rejected</a></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content">
+                                @if (@Model.Username == User.Identity.Name)
+                                {
+                                    <div class="tab-pane" id="card">
+                                        @if (this.User.IsInRole(UserConstants.Administrator))
+                                        {
+                                            <h3 class="text-center">You are part of MiroAutoCenter's team.</h3>
+                                        }
+                                    </div>
+                                }
 
-            <div class="col-md-9">
-                <div class="card">
-                    <h3>Appointments:</h3>
-                    <div class="card-header p-2">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="ApprovedAppointments">Approved</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="WaitingForApproval">Waiting for approval</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="RejectedAppointments">Rejected</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content">
-                            @if (@Model.Username == User.Identity.Name)
-                            {
-                                <div class="tab-pane" id="card">
-                                    @if (this.User.IsInRole(UserConstants.Administrator))
+                                <div class="tab-pane active text-center" id="timeline">
+                                    @if (this.User.Identity.Name == Model.Username)
                                     {
-                                        <h3 class="text-center">You are part of MiroAutoCenter's team.</h3>
+                                        <h3>Welcome to your profile!</h3>
+                                    }
+                                    else
+                                    {
+                                        <h3>Welcome to @Model.Username 's profile!</h3>
                                     }
                                 </div>
-                            }
-
-                            <div class="tab-pane active text-center" id="timeline">
-                                @if (this.User.Identity.Name == Model.Username)
-                                {
-                                    <h3>Welcome to your profile!</h3>
-                                }
-                                else
-                                {
-                                    <h3>Welcome to @Model.Username 's profile!</h3>
-                                }
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            }
         </div>
     </div>
 </section>

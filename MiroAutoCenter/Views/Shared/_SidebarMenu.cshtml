@@ -4,22 +4,22 @@
 {
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/" class="brand-link">
-            <span class="brand-text font-weight-light">Admin panel</span>
+            <span class="brand-text font-weight-light" id="admin-panel">Admin panel</span>
         </a>
 
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                    <a class="d-block text-center">Welcome <br>the admin panel, <br><b>@this.User.Identity?.Name</b></a>
+                    <a class="d-block text-center" id="admin-welcome">Welcome to<br>the admin panel, <br><b>@this.User.Identity?.Name</b></a>
                 </div>
             </div>
 
         <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" id="options-list" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Options</li>
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Services" asp-action="Add" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <i class="nav-icon fa-solid fa-wrench"></i>
                             <p>
                                 Add service
                                 <span class="badge badge-info right"></span>
@@ -36,7 +36,7 @@
                     </li>
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Admin" asp-action="ApproveServices" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
+                            <i class="nav-icon fa-solid fa-check"></i>
                             <p>
                                 Services to approve
                             </p>
@@ -47,3 +47,5 @@
     </div>
 </aside>
 }
+
+<script src="https://kit.fontawesome.com/6121d3cb46.js" crossorigin="anonymous"></script>

@@ -229,3 +229,22 @@ body {
 .font-weight-light{
     font-weight: 600!important;
 }
+
+#admin-welcome{
+    margin-left: 45px;
+    font-size: 18px;
+}
+
+#options-list{
+    font-size: 16px;
+}
+
+#options-list li:first-child{
+    font-size: 24px;
+}
+
+#admin-panel {
+    margin-left: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
