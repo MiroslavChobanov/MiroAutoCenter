@@ -21,50 +21,45 @@
     <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/css/adminlte.min.css" asp-append-version="true">
+
+    <link rel="stylesheet" href="~/css/site.css">
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-primary" id="login-form-id">
             <div class="card-header text-center">
                 <a href="/" class="h1">MiroAutoCenter</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg"><b>Login</b></p>
+                <p class="login-box-msg" id="login-title"><b>Login</b></p>
 
                 <form id="account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-floating">
+                    <div class="form-floating" id="login-username">
                         <b asp-for="Input.Username" class="form-label">Username</b>
                         <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
                         <span asp-validation-for="Input.Username" class="text-danger"></span>
                     </div>
-                    <div class="form-floating">
+                    <div class="form-floating" id="login-password">
                         <b asp-for="Input.Password" class="form-label">Password</b>
                         <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <label asp-for="Input.RememberMe" class="form-label">
-                                    <input class="form-check-input" asp-for="Input.RememberMe" />
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
+                    <div class="row" id="login-row">
+
                         <!-- /.col -->
-                        <div class="col-4">
-                            <button id="login-submit" type="submit" class="btn btn-primary btn-block">Login</button>
+                        <div class="btn-login">
+                            <button type="submit" class="login-submit">Login</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                <p class="mb-1">
+                <p class="after-login">
                     <a id="forgot-password" asp-page="./ForgotPassword">Forgotten password</a>
                 </p>
-                <p class="mb-0">
+                <p class="after-login">
                     <a asp-page="./Register">Register</a>
                 </p>
             </div>
