@@ -400,15 +400,61 @@ body {
 .home-page-container {
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .home-page-container img{
     width: 90%;
 }
 
+.home-page-container p {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.check-services {
+    position: absolute;
+    bottom: -20px;
+    left: 30px;
+    align-items: center;
+    background-color: initial;
+    background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    border-radius: 8px;
+    border-width: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 18px;
+    height: 52px;
+    justify-content: center;
+    line-height: 1;
+    outline: none;
+    overflow: hidden;
+    padding: 0 32px;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all 150ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-bottom: 4%;
+}
 
 
-#appts h3{
+
+#appts h3 {
     margin-top: 10px;
     color: #fff;
     font-weight: 700;
@@ -502,7 +548,7 @@ body {
 
 #login-form-id{
     width:400px;
-    height:500px;
+    height:600px;
 }
 
 #login-username, #login-password {
@@ -617,5 +663,14 @@ body {
 
 .timeline-item{
     padding: 10px!important;
+}
+
+#manage-roles-container{
+    font-size: 18px;
+}
+
+.actions-btns a{
+    font-size: 18px;
+    font-weight: 600;
 }
 

@@ -186,6 +186,12 @@ namespace MiroAutoCenter.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
+            if(serviceCar.Time < DateTime.Now)
+            {
+                TempData[MessageConstants.ErrorMessage] = "You chose a date in the past!";
+                return RedirectToAction("CreateAppointment");
+            }
+
             var serviceId = this.services.CreateAppointment(
                 id,
                 serviceCar.CarId,

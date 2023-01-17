@@ -49,7 +49,9 @@
                         <li class="nav-item dropdown">
                         <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Our services</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Services</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Oil change</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Turbo repair</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Engine check</a>
                             </ul>
                             </li>
                         @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator))

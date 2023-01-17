@@ -9,11 +9,11 @@
     ViewData["Title"] = "All users";
 }
 
-<div class="row">
+<div class="row" id="manage-roles-container">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Всички потребители</h3>
+                <h3 class="card-title">All users</h3>
                 <div class="card-tools">
                 </div>
             </div>
@@ -33,7 +33,7 @@
                             <tr>
                                 <td><a asp-area="" asp-controller="User" asp-action="UserProfile" asp-route-id="@UserManager.Users.Where(x => x.UserName == user.Username).Select(x => x.Id).First()" >@user.Username</a></td>
                                 <td>@user.Email</td>
-                                <td>
+                                <td class="actions-btns">
                                     <a asp-area="RoleManage" asp-action="Edit" asp-controller="UserRole" asp-route-id="@user.Id" class="btn btn-block btn-outline-info btn-xs">Edit</a>
                                     <a asp-area="RoleManage" asp-action="Roles" asp-controller="UserRole" asp-route-id="@user.Id" class="btn btn-block btn-outline-warning btn-xs">Manage roles</a>
                                 </td>
