@@ -8,10 +8,12 @@ namespace MiroAutoCenter.Core.Models.Services
     {
         [Required(ErrorMessage = "{0} is a required field.")]
         [StringLength(50, ErrorMessage = "{0} should be shorter than {1} symbols.")]
+        [MinLength(5,ErrorMessage = "{0} should be minimum {1} symbols.")]
         [Display(Name = "Name")]
         public string Name { get; set; }
 
         [StringLength(200, ErrorMessage = "{0} should be shorter than {1} symbols.")]
+        [MinLength(20, ErrorMessage = "{0} should be minimum {1} symbols.")]
         [Display(Name = "Description")]
         public string? Description { get; set; }
 

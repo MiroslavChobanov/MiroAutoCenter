@@ -548,7 +548,7 @@ body {
 
 #login-form-id{
     width:400px;
-    height:600px;
+    height:560px;
 }
 
 #login-username, #login-password {
@@ -672,5 +672,9 @@ body {
 .actions-btns a{
     font-size: 18px;
     font-weight: 600;
+}
+
+.ext-logins button:first-child{
+    margin-right: 53%;
 }
 
