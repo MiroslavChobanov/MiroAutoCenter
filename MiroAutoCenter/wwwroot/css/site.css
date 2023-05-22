@@ -736,3 +736,8 @@ body {
 .brand-link{
     height: 80px;
 }
+
+.register-submit {
+    position: relative;
+    right: 14%;
+}

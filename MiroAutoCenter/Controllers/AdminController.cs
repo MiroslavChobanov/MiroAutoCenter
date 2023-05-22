@@ -35,13 +35,13 @@ namespace MiroAutoCenter.Controllers
         //{
         //    await roleManager.CreateAsync(new IdentityRole()
         //    {
-        //        Name = "Administrator"
+        //        Name = "Receptionist"
         //    });
 
         //    return Ok();
         //}
 
-        [Authorize(Roles = $"{UserConstants.Administrator}")]
+        [Authorize(Roles = $"{UserConstants.Receptionist}")]
         public IActionResult ApproveServices(int p = 1, int s = 10)
         {
             var loggedUserId = this.users.IdByUser(this.User.Id());
@@ -57,7 +57,7 @@ namespace MiroAutoCenter.Controllers
             return View(allMyServicesForm);
         }
 
-        [Authorize(Roles = $"{UserConstants.Administrator}")]
+        [Authorize(Roles = $"{UserConstants.Receptionist}")]
         public IActionResult Approve(Guid id, AdminApproveDisapproveServiceModel service)
         {
 
@@ -72,7 +72,7 @@ namespace MiroAutoCenter.Controllers
             return RedirectToAction("ApproveServices");
         }
 
-        [Authorize(Roles = $"{UserConstants.Administrator}")]
+        [Authorize(Roles = $"{UserConstants.Receptionist}")]
         public IActionResult Disapprove(Guid id, AdminApproveDisapproveServiceModel service)
         {
 

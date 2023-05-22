@@ -97,7 +97,7 @@ else
                 <p id="service-price">Цена: @service.Price</p>
                 <p id="service-duration">Времетраене:
                     <br>@service.Time</p>
-                @if (!this.User.IsInRole(UserConstants.Administrator))
+                @if (!this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
                 {
                     @if (SignInManager.IsSignedIn(User))
                     {

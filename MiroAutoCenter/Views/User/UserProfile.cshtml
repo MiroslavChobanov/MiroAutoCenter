@@ -34,7 +34,7 @@
                             <strong><i class="fa-solid fa-envelope" id="email-icon"></i>@Model.Email</strong>
                         </div>
                     </div>
-                    @if (!this.User.IsInRole(UserConstants.Administrator))
+                    @if (!this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
                     {
                         <div class="card card-primary card-outline" id="repair-history">
                             <div class="card-body box-profile">
@@ -56,7 +56,7 @@
                     </div>
                 }
             </div>
-            @if (!this.User.IsInRole(UserConstants.Administrator))
+            @if (!this.User.IsInRole(UserConstants.Receptionist))
             {
                 <div class="col-md-9">
                     <div class="card" id="appts">

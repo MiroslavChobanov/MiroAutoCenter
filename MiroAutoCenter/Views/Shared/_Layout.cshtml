@@ -54,13 +54,13 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Проверка на двигател</a>
                             </ul>
                             </li>
-                        @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator))
+                        @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
                         {
                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="MyCars">Моите коли</a>
                             </li>
                         }
-                        @if (!this.User.IsInRole(UserConstants.Administrator))
+                        @if (!this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
                         {
                             <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="About">За нас</a>
