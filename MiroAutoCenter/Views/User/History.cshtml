@@ -2,12 +2,12 @@
 @model IEnumerable<AppointmentModel>
 
 @{
-    ViewBag.Title = "Одобрени заявки";
+    ViewBag.Title = "Предишни ремонти";
 }
 
 @if (!Model.Any())
 {
-    <h2 class="text-center">Нямате одобрени заявки!</h2>
+    <h2 class="text-center">Нямате предишни ремонти при нас!</h2>
 }
 else
 {
@@ -15,7 +15,7 @@ else
         <div class="col-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h5 class="text-center">Вашите одобрени заявки</h5>
+                    <h5 class="text-center">Вашите предишни ремонти</h5>
                 </div>
                 <div>
                     <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -51,6 +51,6 @@ else
     </div>
 }
 
-<h5 class="text-center">Брой одобрени заявки: @Model.Count()</h5>
+<h5 class="text-center">Брой предишни ремонти: @Model.Count()</h5>
 
 

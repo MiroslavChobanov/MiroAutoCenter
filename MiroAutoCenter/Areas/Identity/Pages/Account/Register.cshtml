@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Registration";
+    ViewData["Title"] = "Регистрация";
     Layout = null;
 }
 
@@ -23,43 +23,43 @@
 <div class="register-box">
   <div class="card card-outline card-primary" id="register-form-id">
     <div class="card-header text-center">
-      <a href="/" class="h1">MiroAutoCenter</a>
+      <a href="/" class="h1">Автоцентър Миро</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg" id="register-title"><b>Registration in site</b></p>
+      <p class="login-box-msg" id="register-title"><b>Регистрация</b></p>
 
        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-floating" id="register-username">
-          <b asp-for="Input.UserName">Username</b>
+          <b asp-for="Input.UserName">Потребителско име</b>
           <input asp-for="Input.UserName" class="form-control" autocomplete="username" aria-required="true" />
           <span asp-validation-for="Input.UserName" class="text-danger"></span>
         </div>
         <div class="form-floating" id="register-email">
-          <b asp-for="Input.Email">Email</b>
+          <b asp-for="Input.Email">Имейл</b>
           <input asp-for="Input.Email" class="form-control" autocomplete="email" aria-required="true" />
           <span asp-validation-for="Input.Email" class="text-danger"></span>
         </div>
                     <div class="form-floating" id="register-password">
-          <b asp-for="Input.Password">Password</b>
+          <b asp-for="Input.Password">Парола</b>
           <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
           <span asp-validation-for="Input.Password" class="text-danger"></span>
         </div>
                     <div class="form-floating" id="register-confirm-password">
-          <b asp-for="Input.ConfirmPassword">Confirm password</b>
+          <b asp-for="Input.ConfirmPassword">Потвърдете парола</b>
           <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
           <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
         </div>
         <div class="row" id="register-row">
 
           <div class="btn-register">
-            <button type="submit" class="register-submit">Create profile</button>
+            <button type="submit" class="register-submit">Създаване на профил</button>
           </div>
 
         </div>
       </form>
       <p class="after-register">
-                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">I already have an account./</a>
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Вече имам профил./</a>
                 </p>
       
 

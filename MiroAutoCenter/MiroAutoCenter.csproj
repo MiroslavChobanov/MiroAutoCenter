@@ -23,8 +23,6 @@
     <Folder Include="Areas\Identity\Pages\Account\" />
     <Folder Include="Areas\RoleManage\" />
     <Folder Include="Core\Constants\" />
-    <Folder Include="Core\Contracts\" />
-    <Folder Include="Core\Extensions\" />
     <Folder Include="Hubs\" />
     <Folder Include="Infrastructure\Data\" />
   </ItemGroup>

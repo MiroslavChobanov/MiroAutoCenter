@@ -2,14 +2,14 @@
 @model AdminApproveDisapproveServiceModel
 
 @{
-    ViewData["Title"] = "Approve service";
+    ViewData["Title"] = "Одобряване";
 }
 
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Are you sure you want to approve this appointment?</h3>
+                <h3 class="card-title">Сигурни ли сте, че искате да одобрите тази заявка?</h3>
             </div>
             <form method="post">
                 <div class="card-body">
@@ -18,8 +18,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <a asp-controller="Admin" asp-action="ApproveServices" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-success float-right">Approve</button>
+                    <a asp-controller="Admin" asp-action="ApproveServices" class="btn btn-secondary">Отмяна</a>
+                    <button type="submit" class="btn btn-success float-right">Одобри</button>
                 </div>
             </form>
         </div>

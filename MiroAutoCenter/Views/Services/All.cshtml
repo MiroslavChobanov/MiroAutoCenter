@@ -6,7 +6,7 @@
 @inject SignInManager<WebsiteUser> SignInManager
 @inject UserManager<WebsiteUser> UserManager
 @{
-    ViewBag.Title = "Services";
+    ViewBag.Title = "Услуги";
 }
 @*@if (this.User.IsInRole(UserConstants.Administrator))
 {
@@ -15,7 +15,7 @@
 
 @if (!Model.AllServices.Any())
 {
-    <h2 class="text-center">No services yet!</h2>
+    <h2 class="text-center">Няма услуги все още!</h2>
 }
 else
 {
@@ -85,7 +85,7 @@ else
             </div>
         </div>
     </div>*@
-        <input type="text" id="myInput" onkeyup="searchServices()" placeholder="Search for services..." title="Type in a name">
+        <input type="text" id="myInput" onkeyup="searchServices()" placeholder="Търсене на услуги..." title="Напишете име">
         <br />
     @foreach (var service in Model.AllServices)
     {
@@ -94,20 +94,20 @@ else
                 <img id="tools" src="~/img/tools.png">
                 <p class="service-title" id="service-title">@service.Name</p>
                 <p class="card-text" id="service-text">@service.Description</p>
-                <p id="service-price">Price: @service.Price</p>
-                <p id="service-duration">Duration:
+                <p id="service-price">Цена: @service.Price</p>
+                <p id="service-duration">Времетраене:
                     <br>@service.Time</p>
                 @if (!this.User.IsInRole(UserConstants.Administrator))
                 {
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <a class="appoint-btn" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a>
+                        <a class="appoint-btn" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Запази час</a>
                     }
                 }
                 else
                 {
-                    <a class="edit-btn" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a>
-                    <a class="delete-btn" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Delete</a>
+                    <a class="edit-btn" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Редактирай</a>
+                    <a class="delete-btn" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Изтрий</a>
                 }
   </div>
 </div>

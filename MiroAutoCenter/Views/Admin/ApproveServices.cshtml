@@ -2,13 +2,13 @@
 @model AdminPendingServicesPaginationModel
 
 @{
-    ViewBag.Title = $"Services waiting approval";
+    ViewBag.Title = $"Изчакващи одобрение";
 }
 
 @if (!Model.AllPendingServices.Any())
 {
     <div class="card-body text-center">
-        <h3 class="text-center">No services waiting for approval.</h3>
+        <h3 class="text-center">Няма изчакващи заявки.</h3>
     </div>
 }
 else
@@ -24,8 +24,8 @@ else
                             <h3>@service.ServiceType</h3>
                             <h5>@service.CarMake</h5>
                             <h5>@service.Time</h5>
-                            <span><a asp-controller="Admin" asp-action="Approve" asp-route-id="@service.Id" class="btn btn-success">Approve</a><br /></span>
-                            <span><a asp-controller="Admin" asp-action="Disapprove" asp-route-id="@service.Id" class="btn btn-danger">Disapprove</a></span>
+                            <span><a asp-controller="Admin" asp-action="Approve" asp-route-id="@service.Id" class="btn btn-success">Одобри</a><br /></span>
+                            <span><a asp-controller="Admin" asp-action="Disapprove" asp-route-id="@service.Id" class="btn btn-danger">Отхвърли</a></span>
                         </div>
                     </div>
                 }

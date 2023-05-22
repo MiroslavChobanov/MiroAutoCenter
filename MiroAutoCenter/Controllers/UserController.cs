@@ -43,6 +43,11 @@ namespace MiroAutoCenter.Controllers
             return View();
         }
 
+        public IActionResult Tips()
+        {
+            return View();
+        }
+
         [Authorize]
         public IActionResult ApprovedAppointments()
         {
@@ -74,6 +79,18 @@ namespace MiroAutoCenter.Controllers
 
             var filteredAppts = waitingAppts
                 .Where(aa => aa.Time.Date > DateTime.UtcNow.Date)
+                .ToList();
+
+            return View(filteredAppts);
+        }
+
+        [Authorize]
+        public IActionResult History()
+        {
+            var approvedAppts = this.users.UserApproved(this.User.Id());
+
+            var filteredAppts = approvedAppts
+                .Where(aa => aa.Time.Date < DateTime.UtcNow.Date)
                 .ToList();
 
             return View(filteredAppts);

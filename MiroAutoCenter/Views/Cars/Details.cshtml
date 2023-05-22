@@ -16,20 +16,20 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">
-                    Information
+                    Информация
                 </h3>
             </div>
             <div class="card-body">
                 <dl class="row">
-                    <dt class="col-sm-6">Make:</dt>
+                    <dt class="col-sm-6">Марка:</dt>
                     <dd class="col-sm-6">@Model.Make</dd>
-                    <dt class="col-sm-6">Model:</dt>
+                    <dt class="col-sm-6">Модел:</dt>
                     <dd class="col-sm-6">@Model.Model</dd>
-                    <dt class="col-sm-6">Year of creation:</dt>
+                    <dt class="col-sm-6">Година на производство:</dt>
                     <dd class="col-sm-6">@Model.YearOfCreation</dd>
-                    <dt class="col-sm-6">Plate number:</dt>
+                    <dt class="col-sm-6">Регистрационен номер:</dt>
                     <dd class="col-sm-6">@Model.PlateNumber
-                    <dt class="col-sm-6">Mileage:</dt>
+                    <dt class="col-sm-6">Километри:</dt>
                     <dd class="col-sm-6">@Model.Mileage
                 </dl>
             </div>
@@ -41,12 +41,12 @@
             <div class="card card-warning">
                 <div class="card-header">
                     <h5 class="text-center">
-                        Options to edit or delete
+                        Опции за редактиране или премахване
                     </h5>
                 </div>
                 <div class="card-body">
-                    <a asp-controller="Cars" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning float-left">Edit</a>
-                    <a asp-controller="Cars" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger float-right">Delete</a>
+                    <a asp-controller="Cars" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning float-left">Редактиране</a>
+                    <a asp-controller="Cars" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger float-right">Изтриване</a>
                 </div>
             </div>
         </div>

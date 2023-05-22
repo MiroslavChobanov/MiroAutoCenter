@@ -19,7 +19,7 @@ namespace MiroAutoCenter.Controllers
 
         public IActionResult Index()
         {
-            ViewData[MessageConstants.SuccessMessage] = "Welcome!";
+            ViewData[MessageConstants.SuccessMessage] = "Добре дошли!";
 
             return View();
         }

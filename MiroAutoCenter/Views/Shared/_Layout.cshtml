@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@ViewData["Title"] - MiroAutoCenter</title>
+    <title>@ViewData["Title"] - Автоцентър Миро</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
@@ -28,7 +28,7 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="/" class="navbar-brand">
-                    <span class="brand-text font-weight-light">MiroAutoCenter</span>
+                    <span class="brand-text font-weight-light">Автоцентър - Миро</span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,30 +43,33 @@
                                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Add">Add services</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="Add">Добавяне на услуги</a>
                             </li>
                         }
                         <li class="nav-item dropdown">
-                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Our services</a>
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Нашите услуги</a>
                             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Oil change</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Turbo repair</a>
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Engine check</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Смяна на масло</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Поправка на турбо</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Services" asp-action="All">Проверка на двигател</a>
                             </ul>
                             </li>
                         @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator))
                         {
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="MyCars">My cars</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="MyCars">Моите коли</a>
                             </li>
                         }
                         @if (!this.User.IsInRole(UserConstants.Administrator))
                         {
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="About">About</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="About">За нас</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Contact">Contact us</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Contact">Свържете се</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Tips">Препоръки</a>
                             </li>
 
                         }
@@ -103,7 +106,7 @@
             </div>
         </div>
         <footer class="main-footer">
-            <strong>Copyright &copy; @DateTime.UtcNow.Year <a href="/">MiroAutoCenter</a> </strong>All rights are reserved.
+            <strong>@DateTime.UtcNow.Year <a href="/">Автоцентър Миро</a> </strong>Всички права са запазени.
         </footer>
     </div>
     <script src="~/plugins/jquery/jquery.min.js"></script>

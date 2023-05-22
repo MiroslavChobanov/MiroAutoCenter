@@ -86,7 +86,7 @@ body {
     bottom: 0;
     right: 0;
     margin-right: 15px;
-    max-width: 100px;
+    max-width: 120px;
 }
 
 .appoint-btn {
@@ -111,10 +111,10 @@ body {
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
+    margin-right: 7px;
 }
 
 .edit-btn:hover, .delete-btn:hover {
@@ -231,7 +231,7 @@ body {
 }
 
 #admin-welcome{
-    margin-left: 45px;
+    margin-left: 5px;
     font-size: 18px;
 }
 
@@ -364,7 +364,7 @@ body {
     border-radius: 8px;
     border-width: 0;
     height: 50px;
-    width: 90px;
+    width: 110px;
     line-height: 1;
     outline: none;
     text-align: center;
@@ -473,7 +473,7 @@ body {
 }
 
 #appts-list li:nth-child(1), li:nth-child(2){
-    margin-right: 22%;
+    margin-right: 13%;
 }
 
 #appts-list li:nth-child(1) {
@@ -678,3 +678,61 @@ body {
     margin-right: 53%;
 }
 
+#navbarCollapse > ul > li.nav-item.dropdown > ul{
+    width: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+    .contact-image {
+        display: none;
+    }
+
+    .contact-text {
+        width: 90%;
+        height: 100%;
+    }
+
+    .about-page-image {
+        display: none;
+    }
+
+    .about-page-text {
+        width: 90%;
+        height: 100%;
+    }
+
+    #myInput{
+        width: 50%;
+    }
+
+    #appts-list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #appts-list li {
+        width: 80%;
+        margin-bottom: 2%;
+        text-align: center;
+        margin-left: unset;
+        margin-right: unset;
+    }
+    #appts-list li:first-child {
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .home-page-container p{
+        font-size: 26px;
+    }
+
+    .home-page-container{
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.brand-link{
+    height: 80px;
+}

@@ -7,11 +7,13 @@ namespace MiroAutoCenter.Core.Models.Cars
     {
         [Required(ErrorMessage = "{0} is a required field.")]
         [StringLength(25, ErrorMessage = "{0} should be shorter than {1} symbols.")]
+        [MinLength(2, ErrorMessage = "{0} should be minimum {1} symbols.")]
         [Display(Name = "Make")]
         public string Make { get; set; }
 
         [Required(ErrorMessage = "{0} is a required field.")]
         [StringLength(25, ErrorMessage = "{0} should be shorter than {1} symbols.")]
+        [MinLength(2, ErrorMessage = "{0} should be minimum {1} symbols.")]
         [Display(Name = "Model")]
         public string Model { get; set; }
 
@@ -22,6 +24,7 @@ namespace MiroAutoCenter.Core.Models.Cars
 
         [Required(ErrorMessage = "{0} is a required field.")]
         [StringLength(10, ErrorMessage = "{0} should be shorter than {1} symbols.")]
+        [MinLength(4, ErrorMessage = "{0} should be minimum {1} symbols.")]
         [Display(Name = "Plate Number")]
         public string PlateNumber { get; set; }
 

@@ -16,6 +16,7 @@ namespace MiroAutoCenter.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceStatus> ServiceStatuses { get; set; }
         public DbSet<ServiceCar> ServicesCars { get; set; }
+        public DbSet<QueryLog> QueryLogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

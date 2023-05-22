@@ -2,24 +2,24 @@
 @model ServiceDeleteModel
 
 @{
-    ViewData["Title"] = "Service removal";
+    ViewData["Title"] = "Премахване на услуга";
 }
 
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <div class="card card-danger">
             <div class="card-header">
-                <h3 class="card-title">Are you sure you want to delete the following service?</h3>
+                <h3 class="card-title">Сигурни ли сте, че искате да изтриете тази услуга?</h3>
             </div>
             <form method="post">
                 <div class="card-body">
                     <div class="form-group text-center">
-                        <h3 class="text-center" asp-for="Title">Name: @Model.Name</h3><br>
+                        <h3 class="text-center" asp-for="Title">Име: @Model.Name</h3><br>
                     </div>
                 </div>
                 <div class="card-body">
-                    <a asp-controller="Services" asp-action="All" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-danger float-right">Delete</button>
+                    <a asp-controller="Services" asp-action="All" class="btn btn-secondary">Отмяна</a>
+                    <button type="submit" class="btn btn-danger float-right">Изтрий</button>
                 </div>
             </form>
         </div>

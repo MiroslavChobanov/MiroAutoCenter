@@ -1,4 +1,5 @@
 ﻿using MiroAutoCenter.Core.Models.Services;
+using MiroAutoCenter.Data.Models;
 
 namespace MiroAutoCenter.Core.Contracts
 {
@@ -31,5 +32,6 @@ namespace MiroAutoCenter.Core.Contracts
         public Guid CreateAppointment(Guid serviceId, Guid carId, DateTime time);
 
         public ServicesPaginationModel AllServices(int pageNo, int pageSize);
+
     }
 }

@@ -1,0 +1,159 @@
+﻿<div class="tips-container">
+<section class="checklist-options">
+    <p id="intro-text">Споделете ни какви оплаквания имате, <br>за да Ви препоръчаме подходящата за Вас услуга.</p>
+
+<div class="checklist">
+    <input type="checkbox" id="option1" name="option1" onchange="checkOptionSelected(1)">
+    <label for="option1">Загуба на мощност</label><br>
+
+    <input type="checkbox" id="option2" name="option2" onchange="checkOptionSelected(2)">
+    <label for="option2">Колата не загрява</label><br>
+
+    <input type="checkbox" id="option3" name="option3" onchange="checkOptionSelected(3)">
+    <label for="option3">Климатикът духа само студено</label><br>
+
+    <input type="checkbox" id="option4" name="option4" onchange="checkOptionSelected(4)">
+    <label for="option4">Воланът се върти по-трудно</label><br>
+
+    <input type="checkbox" id="option5" name="option5" onchange="checkOptionSelected(5)">
+    <label for="option5">Изтичане на масло</label><br>
+
+    <input type="checkbox" id="option6" name="option6" onchange="checkOptionSelected(6)">
+    <label for="option6">По-трудна смяна на скорости</label><br>
+
+    <input type="checkbox" id="option7" name="option7" onchange="checkOptionSelected(7)">
+    <label for="option7">Теч на гориво</label><br>
+
+    <input type="checkbox" id="option8" name="option8" onchange="checkOptionSelected(8)">
+    <label for="option8">Проблем с ABS системата</label><br>
+</div>
+</section>
+
+<section class="service-tips">
+    <p id="tip-intro">Може би се нуждаете от:</p>
+    <a id="first-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="BED2C2D3-7F1C-4AFB-ACBA-1B64FF6F545D">Смяна на турбо</a>
+    <a id="second-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="EBB07271-4054-4499-A16F-CD41B386D5ED">Ремонт на климатик</a>
+    <a id="third-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="920EC7E3-646A-4F50-B247-97D661A67D88">Ремонт на хидравлика</a>
+    <a id="forth-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="D4C9A9CD-EE30-4B66-849D-A0988D0159BA">Спирачна система</a>
+    <a id="fifth-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="2F031A3D-D4AA-4706-9B09-9A765FB8F996">Ремонт на скоростна кутия</a>
+    <a id="sixth-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="928ED466-6360-4736-AEB4-1C9F0923B021">Горивна система</a>
+
+</section>
+</div>
+
+
+<style>
+    .checklist>input{
+        width: 40px;
+        height: 40px;
+        margin-right: 7px;
+    }
+
+    .checklist>label{
+        font-size:24px;
+        position: relative;
+        top: -10px;
+    }
+
+    #first-service, #second-service, #third-service, #forth-service, #fifth-service, #sixth-service{
+        display: none;
+        background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
+        border-radius: 30px;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        padding: 10px 20px;
+        margin-bottom: 10px;
+    }
+
+    #tip-intro{
+        display: none;
+    }
+
+    .tips-container{
+        display: flex;
+    }
+
+    .service-tips{
+        margin-left: 50px;
+        margin-top: 100px;
+        font-size: 24px;
+    }
+
+    #intro-text{
+        font-size: 24px;
+        font-style: italic;
+        text-align: center;
+    }
+
+</style>
+
+<script>
+    function checkOptionSelected(optionNumber) {
+        var checkbox = document.getElementById("option" + optionNumber);
+
+        var checkbox1 = document.getElementById("option1");
+        var checkbox2 = document.getElementById("option2");
+        var checkbox5 = document.getElementById("option5");
+
+        var firstService = document.getElementById("first-service");
+        var secondService = document.getElementById("second-service");
+        var thirdService = document.getElementById("third-service");
+        var forthService = document.getElementById("forth-service");
+        var fifthService = document.getElementById("fifth-service");
+        var sixthService = document.getElementById("sixth-service");
+        var tipIntro = document.getElementById("tip-intro");
+
+        if(!checkbox1.checked && !checkbox2.checked && !checkbox5.checked){
+            firstService.style.display = "none";
+        }
+
+  if (checkbox.checked) {
+       tipIntro.style.display = "block";
+       if (optionNumber == 1 || optionNumber == 2 || optionNumber == 5){
+          firstService.style.display = "block";
+        }
+        if (optionNumber == 3){
+          secondService.style.display = "block";
+        }
+        if (optionNumber == 4){
+          thirdService.style.display = "block";
+        }
+        if (optionNumber == 8) {
+            forthService.style.display = "block";
+        }
+        if (optionNumber == 6){
+            fifthService.style.display = "block";
+        }
+        if (optionNumber == 7) {
+            sixthService.style.display = "block";
+        }
+    }
+  else{
+            if (optionNumber == 3) {
+                secondService.style.display = "none";
+            }
+            if (optionNumber == 4) {
+                thirdService.style.display = "none";
+            }
+            if (optionNumber == 8) {
+                forthService.style.display = "none";
+            }
+            if (optionNumber == 6) {
+                fifthService.style.display = "none";
+            }
+            if (optionNumber == 7) {
+                sixthService.style.display = "none";
+            }
+  }
+
+        if (firstService.style.display === "none" && secondService.style.display === "none" && thirdService.style.display === "none" && forthService.style.display === "none" && fifthService.style.display === "none" && sixthService.style.display === "none"){
+            tipIntro.style.display = "none";
+        }
+}
+</script>

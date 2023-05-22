@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Вход";
     Layout = null;
 }
 
@@ -29,20 +29,20 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary" id="login-form-id">
             <div class="card-header text-center">
-                <a href="/" class="h1">MiroAutoCenter</a>
+                <a href="/" class="h1">Автоцентър Миро</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg" id="login-title"><b>Login</b></p>
+                <p class="login-box-msg" id="login-title"><b>Вход</b></p>
 
                 <form id="account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-floating" id="login-username">
-                        <b asp-for="Input.Username" class="form-label">Username</b>
+                        <b asp-for="Input.Username" class="form-label">Потребителско име</b>
                         <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
                         <span asp-validation-for="Input.Username" class="text-danger"></span>
                     </div>
                     <div class="form-floating" id="login-password">
-                        <b asp-for="Input.Password" class="form-label">Password</b>
+                        <b asp-for="Input.Password" class="form-label">Парола</b>
                         <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                     </div>
@@ -50,17 +50,17 @@
 
                         <!-- /.col -->
                         <div class="btn-login">
-                            <button type="submit" class="login-submit">Login</button>
+                            <button type="submit" class="login-submit">Вход</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
                 <p class="after-login">
-                    <a id="forgot-password" asp-page="./ForgotPassword">Forgotten password</a>
+                    <a id="forgot-password" asp-page="./ForgotPassword">Забравена парола</a>
                 </p>
                 <p class="after-login">
-                    <a asp-page="./Register">Register</a>
+                    <a asp-page="./Register">Регистрация</a>
                 </p>
 
                 <div class="ext-logins">

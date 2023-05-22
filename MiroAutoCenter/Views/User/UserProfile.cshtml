@@ -8,7 +8,7 @@
 @model UserDetailsModel
 
 @{
-    ViewBag.Title = $"{Model.Username}'s profile";
+    ViewBag.Title = $"Профил на {Model.Username}";
 }
 
 <section class="content">
@@ -19,7 +19,7 @@
                 <div class="card card-primary card-outline" id="card-outline-username">
                     <div class="card-body box-profile">
                         <h3 class="profile-username text-center">@Model.Username</h3>
-                        <p class="text-muted text-center">@(Model.Role == null ? "User" : Model.Role)</p>
+                        <p class="text-muted text-center">@(Model.Role == null ? "Потребител" : Model.Role)</p>
                     </div>
 
                 </div>
@@ -28,21 +28,30 @@
                 {
                     <div class="card card-primary">
                         <div class="card-header" id="user-email">
-                            <h3 class="card-title">User email</h3>
+                            <h3 class="card-title">Имейл на потребителя</h3>
                         </div>
                         <div class="card-body">
                             <strong><i class="fa-solid fa-envelope" id="email-icon"></i>@Model.Email</strong>
                         </div>
                     </div>
+                    @if (!this.User.IsInRole(UserConstants.Administrator))
+                    {
+                        <div class="card card-primary card-outline" id="repair-history">
+                            <div class="card-body box-profile">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="History">История на ремонти</a>
+                            </div>
+                        </div>
+                    }
+                    
                 }
                 else
                 {
                     <div class="card card-primary">
                         <div class="card-header" id="user-email">
-                            <h3 class="card-title">User email</h3>
+                            <h3 class="card-title">Имейл на потребителя</h3>
                         </div>
                         <div class="card-body text-center">
-                            <strong>To see your email <a asp-area="Identity" asp-page="/Account/Login">log</a> into your profile or <a asp-area="Identity" asp-page="/Account/Register">register</a>.</strong>
+                            <strong>За да видите своя имейл, <a asp-area="Identity" asp-page="/Account/Login">влезте</a> в своя профил или <a asp-area="Identity" asp-page="/Account/Register">се регстрирайте</a>.</strong>
                         </div>
                     </div>
                 }
@@ -51,12 +60,12 @@
             {
                 <div class="col-md-9">
                     <div class="card" id="appts">
-                        <h3>Click to see appointments</h3>
+                        <h3>Натиснете, за да видите заявки</h3>
                         <div class="card-header p-2">
                             <ul class="nav nav-pills" id="appts-list">
-                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="ApprovedAppointments">Approved</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="WaitingForApproval">Waiting for approval</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="RejectedAppointments">Rejected</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="ApprovedAppointments">Одобрени</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="WaitingForApproval">Изчакващи одобрение</a></li>
+                                <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="User" asp-action="RejectedAppointments">Отхвърлени</a></li>
                             </ul>
                         </div>
                 </div>
@@ -65,3 +74,11 @@
         </div>
     </div>
 </section>
+
+
+<style>
+    #repair-history{
+        text-align: center;
+        font-size: 18px;
+    }
+</style>

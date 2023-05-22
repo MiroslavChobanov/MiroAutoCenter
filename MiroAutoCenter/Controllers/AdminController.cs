@@ -48,7 +48,7 @@ namespace MiroAutoCenter.Controllers
 
             if (loggedUserId == null)
             {
-                TempData[MessageConstants.ErrorMessage] = "An error occurred!";
+                TempData[MessageConstants.ErrorMessage] = "Възникна грешка!";
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
@@ -68,7 +68,7 @@ namespace MiroAutoCenter.Controllers
                 return BadRequest();
             }
 
-            TempData[MessageConstants.SuccessMessage] = "Successfully approved the appointment.";
+            TempData[MessageConstants.SuccessMessage] = "Успешно одобрихте заявката.";
             return RedirectToAction("ApproveServices");
         }
 
@@ -83,7 +83,7 @@ namespace MiroAutoCenter.Controllers
                 return BadRequest();
             }
 
-            TempData[MessageConstants.SuccessMessage] = "Successfully rejected the appointment.";
+            TempData[MessageConstants.SuccessMessage] = "Успешно отвхърлихте заявката.";
             return RedirectToAction("ApproveServices");
         }
     }

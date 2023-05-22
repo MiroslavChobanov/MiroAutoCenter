@@ -13,5 +13,6 @@ namespace MiroAutoCenter.Core.Models.ServicesCars
         public DateTime Time { get; set; }
 
         public IEnumerable<CarsListingModel> UserCars { get; set; }
+        public List<AppointmentViewModel> AvailableDays { get; set; }
     }
 }

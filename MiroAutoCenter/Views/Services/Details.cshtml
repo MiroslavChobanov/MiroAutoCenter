@@ -16,18 +16,18 @@
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">
-                    Information
+                    Информация
                 </h3>
             </div>
             <div class="card-body">
                 <dl class="row">
-                    <dt class="col-sm-6">Name:</dt>
+                    <dt class="col-sm-6">Име:</dt>
                     <dd class="col-sm-6">@Model.Name</dd>
-                    <dt class="col-sm-6">Description:</dt>
+                    <dt class="col-sm-6">Описание:</dt>
                     <dd class="col-sm-6">@Model.Description</dd>
-                    <dt class="col-sm-6">Price:</dt>
+                    <dt class="col-sm-6">Цена:</dt>
                     <dd class="col-sm-6">@Model.Price</dd>
-                    <dt class="col-sm-6">Time:</dt>
+                    <dt class="col-sm-6">Времетраене:</dt>
                     <dd class="col-sm-6">@Model.Time</dd>
                 </dl>
             </div>
@@ -40,12 +40,12 @@
             <div class="card card-warning">
                 <div class="card-header">
                     <h5 class="text-center">
-                        Options to edit or delete
+                        Опции за редактиране или изтриване
                     </h5>
                 </div>
                 <div class="card-body">
-                    <a asp-controller="Services" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning float-left">Edit</a>
-                    <a asp-controller="Services" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger float-right">Delete</a>
+                    <a asp-controller="Services" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning float-left">Редактирай</a>
+                    <a asp-controller="Services" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger float-right">Изтрий</a>
                 </div>
             </div>
         </div>

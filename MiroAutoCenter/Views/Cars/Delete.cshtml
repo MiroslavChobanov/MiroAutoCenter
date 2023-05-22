@@ -2,27 +2,27 @@
 @model CarDeleteModel
 
 @{
-    ViewData["Title"] = "Car removal";
+    ViewData["Title"] = "Премахване на кола";
 }
 
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <div class="card card-danger">
             <div class="card-header">
-                <h3 class="card-title">Are you sure you want to delete the following car?</h3>
+                <h3 class="card-title">Сигурни ли сте, че искате да премахнете следната кола?</h3>
             </div>
             <form method="post">
                 <div class="card-body">
                     <div class="form-group text-center">
-                        <h3 class="text-center" asp-for="Title">Make: @Model.Make</h3><br>
-                        <b class="text-center" asp-for="Date">Model: @Model.Model</b><br>
-                        <b class="text-center" asp-for="Date">Year of creation: @Model.YearOfCreation</b><br>
-                        <b class="text-center" asp-for="Date">Plate number: @Model.PlateNumber</b>
+                        <h3 class="text-center" asp-for="Title">Марка: @Model.Make</h3><br>
+                        <b class="text-center" asp-for="Date">Модел: @Model.Model</b><br>
+                        <b class="text-center" asp-for="Date">Година на производство: @Model.YearOfCreation</b><br>
+                        <b class="text-center" asp-for="Date">Регистрационен номер: @Model.PlateNumber</b>
                     </div>
                 </div>
                 <div class="card-body">
-                    <a asp-controller="Cars" asp-action="All" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-danger float-right">Delete</button>
+                    <a asp-controller="Cars" asp-action="All" class="btn btn-secondary">Отмяна</a>
+                    <button type="submit" class="btn btn-danger float-right">Премахване</button>
                 </div>
             </form>
         </div>

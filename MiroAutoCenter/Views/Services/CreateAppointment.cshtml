@@ -2,20 +2,20 @@
 @model ServiceCarAddFormModel
 
 @{
-    ViewData["Title"] = "Create appointment";
+    ViewData["Title"] = "Запази час";
 }
 
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Create appointment</h3>
+                <h3 class="card-title">Запази час</h3>
             </div>
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="card-body">
                     <div class="form-group col-md-9">
-                            <label asp-for="CarId" class="control-label"></label>
+                            <label class="control-label">Автомобил</label>
                             <select asp-for="CarId" class="form-control">
                             @foreach (var car in Model.UserCars)
                             {
@@ -25,12 +25,12 @@
                         <span asp-validation-for="CarId" class="text-danger"></span>
                         </div>
                     <div class="form-group">
-                        <label asp-for="Time"></label>
+                        <label>Ден и час</label>
                         <input asp-for="Time" class="form-control" min="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")">
                         <span asp-validation-for="Time" class="text-danger"></span>
                         <div class="card-body">
-                            <a asp-controller="Services" asp-action="All" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary float-right">Add</button>
+                            <a asp-controller="Services" asp-action="All" class="btn btn-secondary">Отмяна</a>
+                            <button type="submit" class="btn btn-primary float-right">Добавяне</button>
                         </div>
                     </div>
                 </div>
@@ -42,3 +42,64 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+@*@using MiroAutoCenter.Core.Models.ServicesCars
+@model CarAndAppointmentViewModel
+<div class="form-group">
+    <!-- Car selection form -->
+    <!-- Existing code for the car selection form -->
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="card-body">
+            <div class="form-group col-md-9">
+                <label class="control-label">Автомобил</label>
+                <select asp-for="CarId" class="form-control">
+                    @foreach (var car in Model.UserCars)
+                    {
+                        <option value="@car.Id">@car.Make - @car.PlateNumber</option>
+                    }
+                </select>
+                <span asp-validation-for="CarId" class="text-danger"></span>
+            </div>
+        </div>
+    </form>
+    <!-- Appointment table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ден</th>
+                <th>Часове</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var day in Model.AvailableDays)
+            {
+                <tr>
+                    <td>@day.DayOfWeek</td>
+                    <td>
+                        @foreach (var hour in day.AvailableHours)
+                        {
+                            <label class="appointment-hour @(hour.IsAvailable ? "available" : "unavailable")">
+                                <input type="radio" name="selectedTime" value="@hour.Hour" @(hour.IsAvailable ? "" : "disabled")>
+                                @hour.Hour
+                            </label>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<style>
+    .appointment-hour.available {
+        color: green;
+    }
+
+    .appointment-hour.unavailable {
+        color: grey;
+        pointer-events: none;
+    }
+
+</style>*@

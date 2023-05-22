@@ -2,15 +2,15 @@
 @model IEnumerable<CarsListingModel>
 
 @{
-    ViewBag.Title = "My Cars";
+    ViewBag.Title = "Моите автомобили";
 }
 <div>
-    <a class="button-84" asp-area="" asp-controller="Cars" asp-action="Add">Add cars</a>
+    <a class="button-84" asp-area="" asp-controller="Cars" asp-action="Add">Добавяне на автомобил</a>
 </div>
     
 @if (!Model.Any())
 {
-    <h2 class="text-center">No cars yet!</h2>
+    <h2 class="text-center">Все още няма автомобили!</h2>
 }
 else
 {
@@ -18,7 +18,7 @@ else
             <div class="col-12">
                 <div class="card card-primary">
                 <div class="cars-table-header">
-                        <h5>Your cars</h5>
+                        <h5>Вашите автомобили</h5>
                     </div>
                     <div>
                         <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -27,10 +27,10 @@ else
                                     <table class="table table-bordered table-hover dataTable dtr-inline" id="add-cars-table">
                                         <thead>
                                             <tr class="table-primary" id="cars-first-row">
-                                                <th tabindex="0" rowspan="1" colspan="1">Make</th>
-                                                <th tabindex="0" rowspan="1" colspan="1">Model</th>
-                                                <th tabindex="0" rowspan="1" colspan="1">Year Of Creation</th>
-                                                <th tabindex="0" rowspan="1" colspan="1">Plate Number</th>
+                                                <th tabindex="0" rowspan="1" colspan="1">Марка</th>
+                                                <th tabindex="0" rowspan="1" colspan="1">Модел</th>
+                                                <th tabindex="0" rowspan="1" colspan="1">Година на производство</th>
+                                                <th tabindex="0" rowspan="1" colspan="1">Регистрационен номер</th>
                                                 <th tabindex="0" rowspan="1" colspan="1"></th>
                                             </tr>
                                         </thead>
@@ -42,7 +42,7 @@ else
                                                 <td>@car.Model</td>
                                                 <td>@car.YearOfCreation</td>
                                                 <td>@car.PlateNumber</td>
-                                                <td><a class="details-btn" asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">Details</a></td>
+                                                <td><a class="details-btn" asp-controller="Cars" asp-action="Details" asp-route-id="@car.Id">Детайли</a></td>
                                                 </tr>
                                             }
                                         </tbody>
@@ -58,6 +58,6 @@ else
         </div>
     }
 
-    <h5 class="text-center">Count of cars: @Model.Count()</h5>
+    <h5 class="text-center">Брой автомобили: @Model.Count()</h5>
 
 
