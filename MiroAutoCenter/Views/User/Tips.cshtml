@@ -37,7 +37,9 @@
     <a id="forth-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="D4C9A9CD-EE30-4B66-849D-A0988D0159BA">Спирачна система</a>
     <a id="fifth-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="2F031A3D-D4AA-4706-9B09-9A765FB8F996">Ремонт на скоростна кутия</a>
     <a id="sixth-service" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="928ED466-6360-4736-AEB4-1C9F0923B021">Горивна система</a>
-
+</section>
+<section class="new-car-sec">
+    <p id="new-car">Нова кола</p>
 </section>
 </div>
 
@@ -71,7 +73,7 @@
         margin-bottom: 10px;
     }
 
-    #tip-intro{
+    #tip-intro, #new-car{
         display: none;
     }
 
@@ -84,8 +86,12 @@
         margin-top: 100px;
         font-size: 24px;
     }
-
-    #intro-text{
+    .new-car-sec{
+        margin-left: 50px;
+        margin-top: 100px;
+        font-size: 24px;
+    }
+    #intro-text, #new-car{
         font-size: 24px;
         font-style: italic;
         text-align: center;
@@ -99,7 +105,12 @@
 
         var checkbox1 = document.getElementById("option1");
         var checkbox2 = document.getElementById("option2");
+        var checkbox3 = document.getElementById("option3");
+        var checkbox4 = document.getElementById("option4");
         var checkbox5 = document.getElementById("option5");
+        var checkbox6 = document.getElementById("option6");
+        var checkbox7 = document.getElementById("option7");
+        var checkbox8 = document.getElementById("option8");
 
         var firstService = document.getElementById("first-service");
         var secondService = document.getElementById("second-service");
@@ -108,9 +119,17 @@
         var fifthService = document.getElementById("fifth-service");
         var sixthService = document.getElementById("sixth-service");
         var tipIntro = document.getElementById("tip-intro");
+        var newCar = document.getElementById("new-car");
 
         if(!checkbox1.checked && !checkbox2.checked && !checkbox5.checked){
             firstService.style.display = "none";
+        }
+
+        if (checkbox1.checked && checkbox2.checked && checkbox3.checked && checkbox4.checked && checkbox5.checked && checkbox6.checked && checkbox7.checked && checkbox8.checked) {
+            newCar.style.display = "block";
+        }
+        else{
+            newCar.style.display = "none";
         }
 
   if (checkbox.checked) {
@@ -118,19 +137,19 @@
        if (optionNumber == 1 || optionNumber == 2 || optionNumber == 5){
           firstService.style.display = "block";
         }
-        if (optionNumber == 3){
+            if (optionNumber == 3) {
           secondService.style.display = "block";
         }
-        if (optionNumber == 4){
+            if (optionNumber == 4) {
           thirdService.style.display = "block";
         }
-        if (optionNumber == 8) {
+            if (optionNumber == 8) {
             forthService.style.display = "block";
         }
-        if (optionNumber == 6){
+            if (optionNumber == 6) {
             fifthService.style.display = "block";
         }
-        if (optionNumber == 7) {
+            if (optionNumber == 7) {
             sixthService.style.display = "block";
         }
     }
@@ -152,7 +171,7 @@
             }
   }
 
-        if (firstService.style.display === "none" && secondService.style.display === "none" && thirdService.style.display === "none" && forthService.style.display === "none" && fifthService.style.display === "none" && sixthService.style.display === "none"){
+        if (firstService.style.display === "none" && secondService.style.display === "none" && thirdService.style.display === "none" && forthService.style.display === "none" && fifthService.style.display === "none" && sixthService.style.display === "none") {
             tipIntro.style.display = "none";
         }
 }
