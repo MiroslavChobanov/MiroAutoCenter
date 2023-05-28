@@ -57,6 +57,7 @@ builder.Services.AddTransient<IUserRoleService, UserRoleService>();
 builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IServiceService, ServiceService>();
 builder.Services.AddTransient<IQueryService, QueryService>();
+builder.Services.AddTransient<IRatingService, RatingService>();
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);

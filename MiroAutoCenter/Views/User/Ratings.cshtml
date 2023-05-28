@@ -1,0 +1,74 @@
+﻿@*@using MiroAutoCenter.Core.Models.Ratings
+@model RatingAddModel
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card card-primary" id="add-car-container">
+            <div class="card-header" id="add-rating-header">
+                <h3 class="card-title">Добавяне на отзив</h3>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Рейтинг</label>
+                        <input asp-for="StarRating" class="form-control" placeholder="Добавете рейтинг тук...">
+                        <span asp-validation-for="StarRating" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Коментар</label>
+                        <input asp-for="Comment" class="form-control" placeholder="Добавете коментар тук...">
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="add-btn">Добавяне</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+}
+
+
+                        <style>
+    .rating-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .rating-label{
+        cursor:pointer;
+    }
+                        </style>
+
+                  <script>
+    function colorStars(starValue) {
+        var stars = document.querySelectorAll('.rating-label .icon');
+
+        // Remove previous coloring
+        for (var i = 0; i < stars.length; i++) {
+            stars[i].style.color = '';
+        }
+
+        // Color stars based on the selected value
+        for (var i = 0; i < starValue; i++) {
+            stars[i].style.color = 'orange';
+        }
+    }
+
+    // Add event listeners to the radio buttons
+    var starInputs = document.querySelectorAll('.rating-input');
+
+    for (var i = 0; i < starInputs.length; i++) {
+        starInputs[i].addEventListener('change', function () {
+            colorStars(parseInt(this.value));
+        });
+    }
+
+                  </script>*@

@@ -269,6 +269,20 @@ namespace MiroAutoCenter.Controllers
                 return RedirectToAction("CreateAppointment");
             }
 
+            if (serviceCar.Time.DayOfWeek == DayOfWeek.Saturday || serviceCar.Time.DayOfWeek == DayOfWeek.Sunday)
+            {
+                TempData[MessageConstants.ErrorMessage] = "Изберете делничен ден!";
+                return RedirectToAction("CreateAppointment");
+            }
+
+            if (serviceCar.Time.Hour < 9 || serviceCar.Time.Hour > 17)
+            {
+                TempData[MessageConstants.ErrorMessage] = "Изберете час между 09:00 и 17:00!";
+                return RedirectToAction("CreateAppointment");
+            }
+
+            
+
             var serviceId = this.services.CreateAppointment(
                 id,
                 serviceCar.CarId,

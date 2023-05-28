@@ -9,8 +9,10 @@ namespace MiroAutoCenter.Data.Models
         public WebsiteUser()
         {
             this.Cars = new HashSet<Car>();
+            this.Ratings = new HashSet<Rating>();
         }
 
         public ICollection<Car> Cars { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

@@ -48,6 +48,11 @@ namespace MiroAutoCenter.Controllers
             return View();
         }
 
+        public IActionResult Ratings()
+        {
+            return View();
+        }
+
         [Authorize]
         public IActionResult ApprovedAppointments()
         {

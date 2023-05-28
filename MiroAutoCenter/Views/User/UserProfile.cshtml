@@ -56,7 +56,7 @@
                     </div>
                 }
             </div>
-            @if (!this.User.IsInRole(UserConstants.Receptionist))
+            @if (!this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
             {
                 <div class="col-md-9">
                     <div class="card" id="appts">

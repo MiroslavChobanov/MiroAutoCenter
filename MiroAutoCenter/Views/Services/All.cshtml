@@ -8,10 +8,6 @@
 @{
     ViewBag.Title = "Услуги";
 }
-@*@if (this.User.IsInRole(UserConstants.Administrator))
-{
-    <a class="btn btn-primary" asp-area="" asp-controller="Services" asp-action="Add">Add services</a>
-}*@
 
 @if (!Model.AllServices.Any())
 {
@@ -19,72 +15,6 @@
 }
 else
 {
-    @*<input type="text" id="myInput" onkeyup="searchServices()" placeholder="Search for services.." title="Type in a name">
-    <div class="row">
-        <div class="col-12">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h5 class="text-center">Available services</h5>
-                </div>
-                <div>
-                    <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
-                            <div class="col-12">
-                                <table id="example" class="table table-bordered table-hover dataTable dtr-inline">
-                                    <thead>
-                                        <tr class="table-primary">
-                                            <th tabindex="0" rowspan="1" colspan="1">Name</th>
-                                            <th tabindex="0" rowspan="1" colspan="1">Description</th>
-                                            <th tabindex="0" rowspan="1" colspan="1">Price</th>
-                                            <th tabindex="0" rowspan="1" colspan="1">Type</th>
-                                            @if (!this.User.IsInRole(UserConstants.Administrator))
-                                            {
-                                                @if (SignInManager.IsSignedIn(User))
-                                                {
-                                                    <th tabindex="0" rowspan="1" colspan="1"></th>
-                                                }
-
-                                            }
-                                            else
-                                            {
-                                                <th tabindex="0" rowspan="1" colspan="1"></th>
-                                                <th tabindex="0" rowspan="1" colspan="1"></th>
-                                            }
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var service in Model)
-                                        {
-                                            <tr>
-                                                <td><a asp-controller="Services" asp-action="Details" asp-route-id="@service.Id">@service.Name</a></td>
-                                                <td>@service.Description</td>
-                                                <td>@service.Price</td>
-                                                <td>@service.Time</td>
-                                                @if (!this.User.IsInRole(UserConstants.Administrator))
-                                                {
-                                                    @if (SignInManager.IsSignedIn(User))
-                                                    {
-                                                        <td><a class="btn btn-primary" asp-controller="Services" asp-action="CreateAppointment" asp-route-id="@service.Id">Create Appointment</a></td>
-                                                    }
-                                                    }
-                                                else
-                                                {
-                                                    <td><a class="btn btn-primary" asp-controller="Services" asp-action="Edit" asp-route-id="@service.Id">Edit</a></td>
-                                                    <td><a class="btn btn-primary" asp-controller="Services" asp-action="Delete" asp-route-id="@service.Id">Delete</a></td>
-                                                }
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="row">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
         <input type="text" id="myInput" onkeyup="searchServices()" placeholder="Търсене на услуги..." title="Напишете име">
         <br />
     @foreach (var service in Model.AllServices)

@@ -1,0 +1,124 @@
+﻿@using MiroAutoCenter.Core.Models.Ratings
+@model IEnumerable<RatingsListingModel>
+<a id="add-rating" asp-controller="Ratings" asp-action="Add">Добави отзив</a>
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="cars-table-header id="ratings-header">
+                    <h5>Отзиви</h5>
+                
+                </div>
+                <div>
+                    <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered table-hover dataTable dtr-inline" id="add-cars-table">
+                                    <thead>
+                                        <tr class="table-primary" id="cars-first-row">
+                                            <th tabindex="0" rowspan="1" colspan="1">Рейтинг</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Коментар</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Потребител</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Дата</th>
+                                            <th tabindex="0" rowspan="1" colspan="1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var rating in Model)
+                                        {
+                                            <tr class="cars-rows">
+                                            @if(rating.StarRating == 1)
+                                            {
+                                                <td>
+                                                <span class="icon">★</span>
+                                                </td>
+                                            }
+                                            @if (rating.StarRating == 2)
+                                            {
+                                                <td>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                </td>
+                                            }
+                                            @if (rating.StarRating == 3)
+                                            {
+                                                <td>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                                <span class="icon">★</span>
+                                                                </td>
+                                            }
+                                            @if(rating.StarRating == 4)
+                                            {
+                                                <td>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                </td>
+                                            }
+                                            @if(rating.StarRating == 5)
+                                            {
+                                                <td>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                <span class="icon">★</span>
+                                                </td>
+                                            }
+                                            <td>@rating.Comment</td>
+                                            <td>@rating.Username</td>
+                                            <td>@rating.RatingDate</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<h5 class="text-center">Брой отзиви: @Model.Count()</h5>
+
+
+
+<style>
+       #add-rating{
+            margin-bottom: 3%;
+            background-color: beige;
+            padding: 3%;
+            width: 40%;
+        align-items: center;
+        border-radius: 8px;
+        border-width: 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+        box-sizing: border-box;
+        color: black;
+        cursor: pointer;
+        display: inline-flex;
+        flex-direction: column;
+        font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 18px;
+        height: 35px;
+        justify-content: center;
+        line-height: 1;
+        outline: none;
+        overflow: hidden;
+        text-align: center;
+        text-decoration: none;
+        transform: translate3d(0, 0, 0);
+        transition: all 150ms;
+        vertical-align: baseline;
+        white-space: nowrap;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        }
+ </style>

@@ -1,6 +1,146 @@
-﻿<div class="home-page-container">
-   <img src="~/img/homepage.jpg" />
+﻿@using MiroAutoCenter.Core.Models.Ratings
+@model IEnumerable<RatingsListingModel>
+<div class="home-page-container">
+    <img src="~/img/homepage.jpg" />
    <p>Добре дошли в Автоцентър Миро!</p>
     <a class="check-services" asp-area="" asp-controller="Services" asp-action="All">Разгледайте нашите услуги</a>
 </div>
+<div class="ratings">
+    <div>
+        <h2>Отзиви от наши клиенти</h2>
+        <a asp-controller="Ratings" asp-action="All">Всички отзиви</a>
+    </div>
+    <div class="media">
+        <div class="rating-data">
+        <p class="media-heading user_name">@Model.First().Username</p>
+    @if (@Model.First().StarRating == 1)
+    {
+        <p class="bottom-left">
+            <span class="icon">★</span>
+        </p>
+    }
+    @if (@Model.First().StarRating == 2)
+    {
+        <p class="bottom-left">
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </p>
+    }
+    @if (@Model.First().StarRating == 3)
+    {
+        <p class="bottom-left">
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </p>
+    }
+    @if (@Model.First().StarRating == 4)
+    {
+        <p class="bottom-left">
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </p>
+    }
+    @if (@Model.First().StarRating == 5)
+    {
+        <p class="bottom-left">
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+        </p>
+    }
+    </div>
+    <div class="rating-data">
+        <p class="pull-right">@Model.First().RatingDate</p>
+        <p class="bottom-right">@Model.First().Comment</p>
+        
+        </div>
+</div>
+    <div class="media">
+        <div class="rating-data">
+            <p class="media-heading user_name">@Model.ElementAt(1).Username</p>
+            @if (@Model.ElementAt(1).StarRating == 1)
+            {
+                <p class="bottom-left">
+                    <span class="icon">★</span>
+                </p>
+            }
+            @if (@Model.ElementAt(1).StarRating == 2)
+            {
+                <p class="bottom-left">
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </p>
+            }
+            @if (@Model.ElementAt(1).StarRating == 3)
+            {
+                <p class="bottom-left">
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </p>
+            }
+            @if (@Model.ElementAt(1).StarRating == 4)
+            {
+                <p class="bottom-left">
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </p>
+            }
+            @if (@Model.ElementAt(1).StarRating == 5)
+            {
+                <p class="bottom-left">
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                </p>
+            }
+        </div>
+        <div class="rating-data">
+            <p class="pull-right">@Model.ElementAt(1).RatingDate</p>
+            <p class="bottom-right">@Model.ElementAt(1).Comment</p>
 
+        </div>
+    </div>
+</div>
+
+<style>
+    .ratings{
+        position: relative;
+        background-color: lightgoldenrodyellow;
+        max-width: 90%;
+    }
+
+    .rating-data:nth-child(2), .rating-data:nth-child(4){
+        margin-left: 15%;
+        max-width: 170px;
+    }
+
+    .media{
+        margin-bottom: 4%;
+        margin-left: 5%;
+        border-bottom: 2px solid black;
+    }
+
+    .media:nth-child(2){
+        margin-top: 3%;
+    }
+
+    .ratings>div>h2{
+        margin-left: 5%;
+    }
+
+    .ratings > div > a {
+        right: -85%;
+        position: relative;
+        bottom: 30px;
+    }
+</style>

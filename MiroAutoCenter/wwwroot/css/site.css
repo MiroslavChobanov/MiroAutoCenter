@@ -741,3 +741,11 @@ body {
     position: relative;
     right: 14%;
 }
+
+#add-rating-header {
+    background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: black;
+}

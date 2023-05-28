@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using MiroAutoCenter.Core.Constants;
+using MiroAutoCenter.Core.Contracts;
 using MiroAutoCenter.Models;
 using System.Diagnostics;
 
@@ -10,18 +11,22 @@ namespace MiroAutoCenter.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IMemoryCache cache;
+        private readonly IRatingService ratings;
 
-        public HomeController(ILogger<HomeController> logger,IMemoryCache cache)
+        public HomeController(ILogger<HomeController> logger,IMemoryCache cache, IRatingService ratings)
         {
             _logger = logger;
             this.cache = cache;
+            this.ratings = ratings;
         }
 
         public IActionResult Index()
         {
             ViewData[MessageConstants.SuccessMessage] = "Добре дошли!";
 
-            return View();
+            var ratings = this.ratings.All();
+
+            return View(ratings);
         }
 
         public IActionResult Privacy()
