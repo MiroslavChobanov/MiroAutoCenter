@@ -5,12 +5,12 @@ namespace MiroAutoCenter.Core.Models.Ratings
 {
     public class RatingAddModel
     {
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [Range(1, 5, ErrorMessage = "{0} can be between {1} and {2}")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [Range(1, 5, ErrorMessage = "{0} може да е между {1} и {2}")]
         [Display(Name = "Рейтинг")]
         public int StarRating { get; set; }
-        [StringLength(2000, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [MinLength(10, ErrorMessage = "{0} should be minimum {1} symbols.")]
+        [StringLength(2000, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [MinLength(10, ErrorMessage = "{0} трябва да е минимум {1} символа.")]
         [Display(Name = "Коментар")]
         public string? Comment { get; set; }
     }

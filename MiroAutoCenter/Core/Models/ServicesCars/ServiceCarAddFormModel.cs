@@ -9,7 +9,7 @@ namespace MiroAutoCenter.Core.Models.ServicesCars
     {
         public Guid CarId { get; set; }
         public Guid ServiceId { get; set; }
-        [Required(ErrorMessage = "{0} is a required field.")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
         public DateTime Time { get; set; }
 
         public IEnumerable<CarsListingModel> UserCars { get; set; }

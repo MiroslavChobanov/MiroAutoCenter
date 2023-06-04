@@ -11,13 +11,13 @@ namespace MiroAutoCenter.Core.Models.Users
     {
         public string Id { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [Display(Name = "Username")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [Display(Name = "Потребителско име")]
         public string? Username { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Имейл")]
         public string? Email { get; set; }
     }
 }

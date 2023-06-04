@@ -93,11 +93,11 @@ namespace MiroAutoCenter.Areas.RoleManage.Controllers
 
             if (await service.UpdateUser(model))
             {
-                ViewData[MessageConstants.SuccessMessage] = "Successfully saved!";
+                ViewData[MessageConstants.SuccessMessage] = "Успешно запазено!";
             }
             else
             {
-                ViewData[MessageConstants.ErrorMessage] = "An error occurred!";
+                ViewData[MessageConstants.ErrorMessage] = "Възникна грешка!";
             }
 
             return View(model);

@@ -6,25 +6,25 @@ namespace MiroAutoCenter.Core.Models.Services
 {
     public class ServiceAddFormModel
     {
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [StringLength(50, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [MinLength(5,ErrorMessage = "{0} should be minimum {1} symbols.")]
-        [Display(Name = "Name")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [StringLength(50, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [MinLength(5,ErrorMessage = "{0} трябва да е минимум {1} символа.")]
+        [Display(Name = "Име")]
         public string Name { get; set; }
 
-        [StringLength(200, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [MinLength(20, ErrorMessage = "{0} should be minimum {1} symbols.")]
-        [Display(Name = "Description")]
+        [StringLength(200, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [MinLength(20, ErrorMessage = "{0} трябва да е минимум {1} символа.")]
+        [Display(Name = "Описание")]
         public string? Description { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [Range(1, 5000, ErrorMessage = "{0} can be between {1} and {2}")]
-        [Display(Name = "Price")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [Range(1, 5000, ErrorMessage = "{0} може да е между {1} и {2}")]
+        [Display(Name = "Цена")]
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [StringLength(20, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [Display(Name = "Time")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [StringLength(20, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [Display(Name = "Времетраене")]
         public string Time { get; set; }
 
     }

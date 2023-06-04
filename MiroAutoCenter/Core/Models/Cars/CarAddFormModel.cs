@@ -5,35 +5,35 @@ namespace MiroAutoCenter.Core.Models.Cars
 {
     public class CarAddFormModel
     {
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [StringLength(25, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [MinLength(2, ErrorMessage = "{0} should be minimum {1} symbols.")]
-        [Display(Name = "Make")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [StringLength(25, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [MinLength(2, ErrorMessage = "{0} трябва да е минимум {1} символа.")]
+        [Display(Name = "Марка")]
         public string Make { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [StringLength(25, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [MinLength(2, ErrorMessage = "{0} should be minimum {1} symbols.")]
-        [Display(Name = "Model")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [StringLength(25, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [MinLength(2, ErrorMessage = "{0} трябва да е минимум {1} символа.")]
+        [Display(Name = "Модел")]
         public string Model { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [Range(1900, 2100, ErrorMessage = "{0} can be between {1} and {2}")]
-        [Display(Name = "Year Of Creation")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [Range(1900, 2100, ErrorMessage = "{0} може да е между {1} и {2}")]
+        [Display(Name = "Година на производство")]
         public int YearOfCreation { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [StringLength(10, ErrorMessage = "{0} should be shorter than {1} symbols.")]
-        [MinLength(4, ErrorMessage = "{0} should be minimum {1} symbols.")]
-        [Display(Name = "Plate Number")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [StringLength(10, ErrorMessage = "{0} трябва да е по-малко от {1} символа.")]
+        [MinLength(4, ErrorMessage = "{0} трябва да е минимум {1} символа.")]
+        [Display(Name = "Регистрационен номер")]
         public string PlateNumber { get; set; }
 
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [Range(0, 500000, ErrorMessage = "{0} can be between {1} and {2}")]
-        [Display(Name = "Mileage")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [Range(0, 500000, ErrorMessage = "{0} може да е между {1} и {2}")]
+        [Display(Name = "Пробег")]
         public int Mileage { get; set; }
-        [Required(ErrorMessage = "{0} is a required field.")]
-        [Display(Name = "Car Type")]
+        [Required(ErrorMessage = "{0} е задължително поле.")]
+        [Display(Name = "Категория")]
         public Guid CarTypeId { get; set; }
         [Required]
         public IEnumerable<CarCarTypeViewModel> CarTypes { get; set; }

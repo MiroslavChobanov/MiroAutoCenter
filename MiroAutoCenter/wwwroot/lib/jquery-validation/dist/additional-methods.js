@@ -429,13 +429,13 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
 }, "Please enter a valid credit card number." );
 
 /**
- * Validates currencies with any given symbols by @jameslouiz
- * Symbols can be optional or required. Symbols required by default
+ * Validates currencies with any given символа by @jameslouiz
+ * символа can be optional or required. символа required by default
  *
  * Usage examples:
  *  currency: ["£", false] - Use false for soft currency validation
  *  currency: ["$", false]
- *  currency: ["RM", false] - also works with text based symbols such as "RM" - Malaysia Ringgit etc
+ *  currency: ["RM", false] - also works with text based символа such as "RM" - Malaysia Ringgit etc
  *
  *  <input class="currencyInput" name="currencyInput">
  *
@@ -451,7 +451,7 @@ $.validator.addMethod( "creditcardtypes", function( value, element, param ) {
  *     currency: ["$", true]
  *  }
  *
- * Multiple Symbols
+ * Multiple символа
  *  currencyInput: {
  *     currency: "$,£,¢"
  *  }

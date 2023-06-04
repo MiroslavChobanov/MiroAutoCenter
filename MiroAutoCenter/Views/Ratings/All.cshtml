@@ -1,6 +1,14 @@
 ﻿@using MiroAutoCenter.Core.Models.Ratings
 @model IEnumerable<RatingsListingModel>
-<a id="add-rating" asp-controller="Ratings" asp-action="Add">Добави отзив</a>
+@using Microsoft.AspNetCore.Identity
+@using MiroAutoCenter.Core.Constants
+@using MiroAutoCenter.Data.Models
+@inject SignInManager<WebsiteUser> SignInManager
+@inject UserManager<WebsiteUser> UserManager
+@if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
+{
+    <a id="add-rating" asp-controller="Ratings" asp-action="Add">Добави отзив</a>
+}
     <div class="row">
         <div class="col-12">
             <div class="card card-primary">

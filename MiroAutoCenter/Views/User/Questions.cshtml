@@ -1,0 +1,151 @@
+﻿<div class="question-page">
+    <div class="question-form">
+        <textarea id="question-input" placeholder="Ask a question"></textarea>
+        <button id="submit-button">Submit</button>
+    </div>
+
+    <div class="questions">
+        <div class="question">
+            <div class="question-info">
+                <p class="question-username">John Doe</p>
+                <p class="question-datetime">May 15, 2023 10:30 AM</p>
+            </div>
+            <p class="question-text">How can I book an appointment?</p>
+            <div class="replies">
+                <div class="reply">
+                    <div class="reply-info">
+                        <p class="reply-username">Admin</p>
+                        <p class="reply-datetime">May 16, 2023 9:45 AM</p>
+                    </div>
+                    <p class="reply-text">To book an appointment, you can visit our website and click on the "Book Appointment" button.</p>
+                </div>
+            </div>
+        </div>
+        <!-- More questions -->
+        <div class="question">
+            <div class="question-info">
+                <p class="question-username">John Doe</p>
+                <p class="question-datetime">May 15, 2023 10:30 AM</p>
+            </div>
+            <p class="question-text">How can I book an appointment?</p>
+            <div class="replies">
+                <div class="reply">
+                    <div class="reply-info">
+                        <p class="reply-username">Admin</p>
+                        <p class="reply-datetime">May 16, 2023 9:45 AM</p>
+                    </div>
+                    <p class="reply-text">To book an appointment, you can visit our website and click on the "Book Appointment" button.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                <style>
+    .question-page {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    .question-form {
+        margin-bottom: 20px;
+    }
+
+    #question-input {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f7f7f7;
+        resize: none;
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    #submit-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+        #submit-button:hover {
+            background-color: #0056b3;
+        }
+
+    .question {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 5px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .question-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .question-username {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .question-datetime {
+        color: #777;
+        font-size: 14px;
+    }
+
+    .question-text {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .replies {
+        margin-left: 20px;
+    }
+
+    .reply {
+        background-color: #f7f7f7;
+        border: 1px solid #e8e8e8;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .reply-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .reply-username {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .reply-datetime {
+        color: #777;
+        font-size: 14px;
+    }
+
+    .reply-text {
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+
+                </style>

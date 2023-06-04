@@ -41,7 +41,7 @@ namespace MiroAutoCenter.Controllers
 
             if (userId == null)
             {
-                TempData[MessageConstants.ErrorMessage] = "Грешка възникна!";
+                TempData[MessageConstants.ErrorMessage] = "Възникна грешка!";
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
 
