@@ -44,5 +44,10 @@ namespace MiroAutoCenter.Data.Models
 
         [ForeignKey(nameof(UserId))]
         public WebsiteUser User { get; set; }
+
+        public Guid? CarStatusId { get; set; }
+
+        [ForeignKey(nameof(CarStatusId))]
+        public CarStatus? CarStatus { get; set; }
     }
 }

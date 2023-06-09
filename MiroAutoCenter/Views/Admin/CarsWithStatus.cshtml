@@ -1,0 +1,57 @@
+﻿@using MiroAutoCenter.Core.Models.Cars
+@model IEnumerable<CarStatusEditModel>
+
+@if (!Model.Any())
+{
+    <h2 class="text-center">Все още няма автомобили!</h2>
+}
+else
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-primary">
+                <div class="cars-table-header">
+                    <h5>Списък с автомобили</h5>
+                </div>
+                <div>
+                    <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered table-hover dataTable dtr-inline" id="add-cars-table">
+                                    <thead>
+                                        <tr class="table-primary" id="cars-first-row">
+                                            <th tabindex="0" rowspan="1" colspan="1">Марка</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Модел</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Година на производство</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Регистрационен номер</th>
+                                            <th tabindex="0" rowspan="1" colspan="1">Статус</th>
+                                            <th tabindex="0" rowspan="1" colspan="1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var car in Model)
+                                        {
+                                            <tr class="cars-rows @car.CarStatus.ClassColor">
+                                                <td>@car.Make</td>
+                                                <td>@car.Model</td>
+                                                <td>@car.YearOfCreation</td>
+                                                <td>@car.PlateNumber</td>
+                                                <td>@car.CarStatus.StatusDescription</td>
+                                                <td><a class="details-btn" asp-controller="Admin" asp-action="EditStatus" asp-route-id="@car.Id">Смяна на статус</a></td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<h5 class="text-center">Брой автомобили: @Model.Count()</h5>

@@ -4,16 +4,29 @@
 {
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/" class="brand-link">
+            @if (this.User.IsInRole(UserConstants.Administrator))
+            {
             <span class="brand-text font-weight-light" id="admin-panel">Администраторски <br> панел</span>
+            }
+            @if (this.User.IsInRole(UserConstants.Receptionist))
+            {
+               <span class="brand-text font-weight-light" id="admin-panel">Панел на <br>приемчик</span>
+            }
         </a>
 
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="info">
-                    <a class="d-block text-center" id="admin-welcome">Добре дошли в<br>администраторския панел, <br><b>@this.User.Identity?.Name</b></a>
+                    @if (this.User.IsInRole(UserConstants.Administrator))
+                    {
+                        <a class="d-block text-center" id="admin-welcome">Добре дошли в<br>администраторския панел, <br><b>@this.User.Identity?.Name</b></a>
+                    }
+                    @if (this.User.IsInRole(UserConstants.Receptionist))
+                    {
+                        <a class="d-block text-center" id="admin-welcome">Добре дошли в<br>панела на приемчика, <br><b>@this.User.Identity?.Name</b></a>
+                    }
                 </div>
             </div>
-
         <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" id="options-list" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Опции</li>
@@ -44,7 +57,38 @@
                             </p>
                         </a>
                     </li>
-                }  
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Admin" asp-action="CarsWithStatus" class="nav-link">
+                                <i class="nav-icon fa-solid fa-check"></i>
+                                <p>
+                                    Статуси на коли
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Admin" asp-action="IncomingAppointments" class="nav-link">
+                                <i class="nav-icon fa-solid fa-check"></i>
+                                <p>
+                                    Предстоящи ремонти
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Admin" asp-action="PastAppointments" class="nav-link">
+                                <i class="nav-icon fa-solid fa-check"></i>
+                                <p>
+                                    Минали ремонти
+                                </p>
+                            </a>
+                        </li>
+                }       <li class="nav-item">
+                            <a asp-area="" asp-controller="Admin" asp-action="ReceivedCars" class="nav-link">
+                                <i class="nav-icon fa-solid fa-check"></i>
+                                <p>
+                                    Получени коли
+                                </p>
+                            </a>
+                        </li>
                 </ul>
             </nav>
     </div>

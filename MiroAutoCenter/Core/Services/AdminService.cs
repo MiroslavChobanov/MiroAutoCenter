@@ -1,5 +1,7 @@
 ﻿using MiroAutoCenter.Core.Contracts;
 using MiroAutoCenter.Core.Models.Admin;
+using MiroAutoCenter.Core.Models.Cars;
+using MiroAutoCenter.Core.Models.Users;
 using MiroAutoCenter.Data;
 using MiroAutoCenter.Data.Models;
 using System;
@@ -48,6 +50,9 @@ namespace MiroAutoCenter.Core.Services
         {
             var serviceCarData = this.data.ServicesCars.First(x => x.Id == id);
 
+            var carId = serviceCarData.CarId;
+            var carData = this.data.Cars.First(x => x.Id == carId);
+
             if (serviceCarData == null)
             {
                 return false;
@@ -55,6 +60,9 @@ namespace MiroAutoCenter.Core.Services
 
             serviceCarData.ServiceStatusId = this.data.ServiceStatuses.First(x => x.ClassColor == "table-success").Id;
             serviceCarData.ServiceStatus = this.data.ServiceStatuses.First(x => x.ClassColor == "table-success");
+
+            carData.CarStatusId = this.data.CarStatuses.First(x => x.StatusDescription == "Незапочната").Id;
+            carData.CarStatus = this.data.CarStatuses.First(x => x.StatusDescription == "Незапочната");
 
             this.data.SaveChanges();
 
@@ -76,6 +84,37 @@ namespace MiroAutoCenter.Core.Services
             this.data.SaveChanges();
 
             return true;
+        }
+
+        public IEnumerable<AppointmentModel> GetAllApproved()
+        {
+            return this.data.ServicesCars
+                .Where(a => a.ServiceStatus.ClassColor == "table-success")
+                .Select(a => new AppointmentModel
+                {
+                    Time = a.Time,
+                    ServiceName = a.Service.Name,
+                    CarModel = a.Car.Make
+                })
+                .ToList();
+        }
+
+        public IEnumerable<CarStatusEditModel> GetReceivedCars()
+        {
+            return this.data.Cars
+                .Where(x => !x.IsDeleted && x.CarStatus.StatusDescription == "Получен")
+                .Select(v => new CarStatusEditModel
+                {
+                    Id = v.Id,
+                    Make = v.Make,
+                    Model = v.Model,
+                    PlateNumber = v.PlateNumber,
+                    YearOfCreation = v.YearOfCreation,
+                    Mileage = v.Mileage,
+                    CarStatusId = v.CarStatusId,
+                    CarStatus = v.CarStatus
+                })
+                .ToList();
         }
     }
 }

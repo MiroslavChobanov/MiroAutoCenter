@@ -1,6 +1,8 @@
 ﻿@using MiroAutoCenter.Core.Models.Ratings
 @model RatingAddModel
-
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <div class="card card-primary" id="add-car-container">
@@ -12,42 +14,26 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Рейтинг</label>
-                        <input asp-for="StarRating" class="form-control" placeholder="Добавете рейтинг тук...">
+                        <input asp-for="StarRating" class="form-control" id="rating-input" placeholder="Добавете рейтинг тук...">
                         <span asp-validation-for="StarRating" class="text-danger"></span>
+                        <br />
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
                     </div>
-                                      @*<div class="form-group">
-                    <form class="rating">
-                    <label class="rating-label">
-                    <input class="rating-input" type="radio" name="stars" value="1" />
-                    <span class="icon">★</span>
-                    </label>
-                    <label class="rating-label">
-                    <input class="rating-input" type="radio" name="stars" value="2" />
-                    <span class="icon">★</span>
-                    </label>
-                    <label class="rating-label">
-                    <input class="rating-input" type="radio" name="stars" value="3" />
-                    <span class="icon">★</span>
-                    </label>
-                    <label class="rating-label">
-                    <input class="rating-input" type="radio" name="stars" value="4" />
-                    <span class="icon">★</span>
-                    </label>
-                    <label class="rating-label">
-                    <input class="rating-input" type="radio" name="stars" value="5" />
-                    <span class="icon">★</span>
-                    </label>
-                    </form>
-                    </div>*@
-
                     <div class="form-group">
                         <label>Коментар</label>
                         <input asp-for="Comment" class="form-control" placeholder="Добавете коментар тук...">
                         <span asp-validation-for="Comment" class="text-danger"></span>
                     </div>
                     <button type="submit" class="add-btn">Добавяне</button>
+
+
                 </div>
             </form>
+
         </div>
     </div>
 </div>
@@ -59,40 +45,36 @@
 
 
 <style>
-    .rating-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
+    #rating-input {
+        display: none;
     }
 
-    .rating-label {
+    .fa-star{
         cursor: pointer;
+    }
+
+    .checked {
+        color: orange;
     }
 </style>
 
 <script>
-    function colorStars(starValue) {
-        var stars = document.querySelectorAll('.rating-label .icon');
+    document.addEventListener("DOMContentLoaded", function () {
+        var stars = document.querySelectorAll(".fa-star");
+        var ratingInput = document.getElementById("rating-input");
 
-        // Remove previous coloring
-        for (var i = 0; i < stars.length; i++) {
-            stars[i].style.color = '';
-        }
+        stars.forEach(function (star, index) {
+            star.addEventListener("click", function () {
+                for (var i = 0; i <= index; i++) {
+                    stars[i].classList.add("checked");
+                }
 
-        // Color stars based on the selected value
-        for (var i = 0; i < starValue; i++) {
-            stars[i].style.color = 'orange';
-        }
-    }
+                for (var j = index + 1; j < stars.length; j++) {
+                    stars[j].classList.remove("checked");
+                }
 
-    // Add event listeners to the radio buttons
-    var starInputs = document.querySelectorAll('.rating-input');
-
-    for (var i = 0; i < starInputs.length; i++) {
-        starInputs[i].addEventListener('change', function () {
-            colorStars(parseInt(this.value));
+                ratingInput.value = index + 1;
+            });
         });
-    }
-
+    });
 </script>

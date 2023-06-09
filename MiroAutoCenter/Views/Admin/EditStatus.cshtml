@@ -1,0 +1,48 @@
+﻿@using MiroAutoCenter.Core.Models.Cars
+@model CarStatusEditModel
+
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">Редактиране на кола с номер @Model.PlateNumber</h3>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Марка</label>
+                        <input asp-for="Make" class="form-control">
+                        <span asp-validation-for="Make" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Модел</label>
+                        <input asp-for="Model" class="form-control">
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-9">
+                            <label class="control-label">Категория</label>
+                            <select asp-for="CarStatusId" class="form-control">
+                                @foreach (var carStatus in Model.CarStatuses)
+                                {
+                                    <option value="@carStatus.Id">@carStatus.StatusDescription</option>
+                                }
+                            </select>
+                            <span asp-validation-for="CarStatusId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a asp-controller="Cars" asp-action="All" class="btn btn-secondary">Отмяна</a>
+                    <button type="submit" class="btn btn-warning float-right">Редактирай</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

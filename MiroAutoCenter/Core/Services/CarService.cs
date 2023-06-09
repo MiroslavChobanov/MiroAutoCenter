@@ -30,7 +30,7 @@ namespace MiroAutoCenter.Core.Services
         //             Mileage= x.Mileage,
         //             CarTypeId= x.CarTypeId,
         //             CarType = x.CarType
-                     
+
         //         })
         //         .OrderBy(x => x.Id)
         //         .ToList();
@@ -44,6 +44,20 @@ namespace MiroAutoCenter.Core.Services
                 {
                     Id = x.Id,
                     Type = x.Type
+                })
+                .ToList();
+        }
+
+        public IEnumerable<CarStatusViewModel> AllCarStatuses()
+        {
+            return this.data
+                .CarStatuses
+                .Select(x => new CarStatusViewModel
+                {
+                    Id = x.Id,
+                    StatusDescription = x.StatusDescription,
+                    ClassColor = x.ClassColor,
+                    Counter = x.Counter
                 })
                 .ToList();
         }
@@ -158,7 +172,7 @@ namespace MiroAutoCenter.Core.Services
                     Make = x.Make,
                     Model = x.Model,
                     PlateNumber = x.PlateNumber,
-                    YearOfCreation = x.YearOfCreation, 
+                    YearOfCreation = x.YearOfCreation,
                     Mileage = x.Mileage,
                     CarTypeId = x.CarTypeId
                 })
@@ -195,6 +209,56 @@ namespace MiroAutoCenter.Core.Services
                 .Where(c => c.UserId == userId)
                 .Select(c => c.Id)
                 .FirstOrDefault();
+        }
+
+        public bool EditStatus(Guid id, Guid? statusId)
+        {
+            var carData = this.data.Cars.Find(id);
+
+            if (carData == null)
+            {
+                return false;
+            }
+
+            carData.CarStatusId = statusId;
+            carData.CarStatus = this.data.CarStatuses.Find(statusId);
+
+            this.data.SaveChanges();
+
+            return true;
+        }
+
+        public CarStatusEditModel EditStatusViewData(Guid id)
+        {
+            return this.data.Cars
+                .Where(x => x.Id == id)
+                .Select(x => new CarStatusEditModel
+                {
+                    Make = x.Make,
+                    Model = x.Model,
+                    PlateNumber = x.PlateNumber,
+                    CarStatusId = x.CarStatusId,
+                    CarStatus = x.CarStatus
+                })
+                .First();
+        }
+
+        public IEnumerable<CarStatusEditModel> GetCarsWithStatus()
+        {
+            return this.data.Cars
+                .Where(x => !x.IsDeleted && x.CarStatus.StatusDescription != "Получен" && x.CarStatus.StatusDescription != null)
+                .Select(v => new CarStatusEditModel
+                {
+                    Id = v.Id,
+                    Make = v.Make,
+                    Model = v.Model,
+                    PlateNumber = v.PlateNumber,
+                    YearOfCreation = v.YearOfCreation,
+                    Mileage = v.Mileage,
+                    CarStatusId = v.CarStatusId,
+                    CarStatus = v.CarStatus
+                })
+                .ToList();
         }
     }
 }

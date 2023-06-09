@@ -19,6 +19,7 @@ namespace MiroAutoCenter.Infrastructure.Extensions
 
             SeedServiceStatuses(services);
             SeedCarTypes(services);
+            SeedCarStatuses(services);
 
             return app;
         }
@@ -69,6 +70,27 @@ namespace MiroAutoCenter.Infrastructure.Extensions
                 new CarType { Type = "Convertible" },
                 new CarType { Type = "SUV" },
                 new CarType { Type = "Pickup Truck" }
+            });
+
+            data.SaveChanges();
+        }
+
+        private static void SeedCarStatuses(IServiceProvider services)
+        {
+            var data = services.GetRequiredService<MiroAutoCenterDbContext>();
+
+            if (data.CarStatuses.Any())
+            {
+                return;
+            }
+
+            data.CarStatuses.AddRange(new[]
+            {
+                new CarStatus { StatusDescription = "Получен", ClassColor="table-success", Counter = 1},
+                new CarStatus { StatusDescription = "Готов", ClassColor="table-primary", Counter = 2},
+                new CarStatus { StatusDescription = "В процес", ClassColor="table-warning", Counter = 3},
+                new CarStatus { StatusDescription = "Незапочната", ClassColor="table-secondary", Counter = 4},
+
             });
 
             data.SaveChanges();

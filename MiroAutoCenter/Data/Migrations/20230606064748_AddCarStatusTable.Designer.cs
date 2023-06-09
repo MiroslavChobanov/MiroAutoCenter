@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiroAutoCenter.Data;
 
@@ -11,9 +12,10 @@ using MiroAutoCenter.Data;
 namespace MiroAutoCenter.Data.Migrations
 {
     [DbContext(typeof(MiroAutoCenterDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230606064748_AddCarStatusTable")]
+    partial class AddCarStatusTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,7 +304,7 @@ namespace MiroAutoCenter.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CarStatuses");
+                    b.ToTable("CarStatus");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.CarType", b =>
@@ -366,7 +368,7 @@ namespace MiroAutoCenter.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Ratings");
+                    b.ToTable("Rating");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.Service", b =>

@@ -1,4 +1,5 @@
 ﻿using MiroAutoCenter.Core.Models.Cars;
+using MiroAutoCenter.Data.Models;
 
 namespace MiroAutoCenter.Core.Contracts
 {
@@ -40,5 +41,12 @@ namespace MiroAutoCenter.Core.Contracts
         IEnumerable<CarsListingModel> ByUser(string userId);
 
         public Guid IdByUser(string userId);
+
+        public bool EditStatus(Guid id, Guid? statusId);
+        public CarStatusEditModel EditStatusViewData(Guid id);
+
+        public IEnumerable<CarStatusEditModel> GetCarsWithStatus();
+
+        public IEnumerable<CarStatusViewModel> AllCarStatuses();
     }
 }

@@ -5,6 +5,7 @@ using MiroAutoCenter.Core.Constants;
 using MiroAutoCenter.Core.Contracts;
 using MiroAutoCenter.Core.Extensions;
 using MiroAutoCenter.Core.Models.Admin;
+using MiroAutoCenter.Core.Models.Cars;
 
 namespace MiroAutoCenter.Controllers
 {
@@ -13,11 +14,13 @@ namespace MiroAutoCenter.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IAdminService admins;
         private readonly IUserService users;
-        public AdminController(RoleManager<IdentityRole> roleManager, IAdminService admins, IUserService users)
+        private readonly ICarService cars;
+        public AdminController(RoleManager<IdentityRole> roleManager, IAdminService admins, IUserService users, ICarService cars)
         {
             this.roleManager = roleManager;
             this.admins = admins;
             this.users = users;
+            this.cars = cars;
         }
 
         public IActionResult Index()
@@ -83,8 +86,78 @@ namespace MiroAutoCenter.Controllers
                 return BadRequest();
             }
 
-            TempData[MessageConstants.SuccessMessage] = "Успешно отвхърлихте заявката.";
+            TempData[MessageConstants.SuccessMessage] = "Успешно отхвърлихте заявката.";
             return RedirectToAction("ApproveServices");
+        }
+
+        [Authorize(Roles = $"{UserConstants.Receptionist}")]
+        public IActionResult CarsWithStatus()
+        {
+            var myCars = this.cars.GetCarsWithStatus();
+
+            return View(myCars);
+        }
+        [Authorize(Roles = UserConstants.Receptionist)]
+        public IActionResult EditStatus(Guid id)
+        {
+
+            var cars = this.cars.Details(id);
+
+            var carsForm = this.cars.EditStatusViewData(cars.Id);
+
+            carsForm.CarStatuses = this.cars.AllCarStatuses();
+
+            return View(carsForm);
+        }
+        [HttpPost]
+        [Authorize(Roles = UserConstants.Receptionist)]
+        public IActionResult EditStatus(Guid id, CarStatusEditModel car)
+        {
+
+            var edited = this.cars.EditStatus(
+                id,
+                car.CarStatusId
+                );
+
+            if (!edited)
+            {
+                return BadRequest();
+            }
+
+            TempData[MessageConstants.SuccessMessage] = "Статусът на автомобила е редактиран успешно!";
+            return RedirectToAction("CarsWithStatus");
+        }
+
+        [Authorize(Roles = UserConstants.Receptionist)]
+        public IActionResult IncomingAppointments()
+        {
+            var approvedAppts = this.admins.GetAllApproved();
+
+            var filteredAppts = approvedAppts
+                .Where(aa => aa.Time.Date > DateTime.UtcNow.Date)
+                .ToList();
+
+            return View(filteredAppts);
+        }
+
+        [Authorize(Roles = UserConstants.Receptionist)]
+        public IActionResult PastAppointments()
+        {
+            var approvedAppts = this.admins.GetAllApproved();
+
+            var filteredAppts = approvedAppts
+                .Where(aa => aa.Time.Date < DateTime.UtcNow.Date)
+                .ToList();
+
+            return View(filteredAppts);
+        }
+
+        [Authorize(Roles = UserConstants.Receptionist)]
+        public IActionResult ReceivedCars()
+        {
+            var received = this.admins.GetReceivedCars();
+
+            return View(received);
         }
     }
 }
