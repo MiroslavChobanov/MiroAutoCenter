@@ -1,14 +1,30 @@
 ﻿@using MiroAutoCenter.Core.Models.Ratings
+@using Microsoft.AspNetCore.Identity
+@using MiroAutoCenter.Core.Constants
+@using MiroAutoCenter.Data.Models
 @model IEnumerable<RatingsListingModel>
-<div id="notification" class="notification">
+@inject SignInManager<WebsiteUser> SignInManager
+@inject UserManager<WebsiteUser> UserManager
+@inject MiroAutoCenter.Core.Contracts.ICarService CarService
+
+    @if (SignInManager.IsSignedIn(User) && !this.User.IsInRole(UserConstants.Administrator) && !this.User.IsInRole(UserConstants.Receptionist))
+{
     
-</div>
+    var user = await UserManager.GetUserAsync(User);
+    var userCars = CarService.ReadyCarsByUser(user.Id);
+    if(userCars.Any()){
+        <div id="notification" class="notification">
+            <div class="user-notif">
+                <span id="notificationMessage">Имате автомобил за получаване</span>
+                <button id="closeButton" class="closeButton">&times;</button>
+            </div>
+        </div>
+    }
+    
+}
 <div class="home-page-container">
     <img src="~/img/homepage.jpg" />
-    <div class="user-notif">
-    <span id="notificationMessage">Your message goes here</span>
-    <button id="closeButton" class="closeButton">&times;</button>
-    </div>
+    
    <p>Добре дошли в Автоцентър Миро!</p>
     <a class="check-services" asp-area="" asp-controller="Services" asp-action="All">Разгледайте нашите услуги</a>
 </div>
@@ -119,21 +135,21 @@
     </div>
     <div class="media">
         <div class="rating-data">
-            <p class="media-heading user_name">@Model.ElementAt(3).Username</p>
-            @if (@Model.ElementAt(3).StarRating == 1)
+            <p class="media-heading user_name">@Model.ElementAt(2).Username</p>
+            @if (@Model.ElementAt(2).StarRating == 1)
             {
                 <p class="bottom-left">
                     <span class="icon">★</span>
                 </p>
             }
-            @if (@Model.ElementAt(3).StarRating == 2)
+            @if (@Model.ElementAt(2).StarRating == 2)
             {
                 <p class="bottom-left">
                     <span class="icon">★</span>
                     <span class="icon">★</span>
                 </p>
             }
-            @if (@Model.ElementAt(3).StarRating == 3)
+            @if (@Model.ElementAt(2).StarRating == 3)
             {
                 <p class="bottom-left">
                     <span class="icon">★</span>
@@ -141,7 +157,7 @@
                     <span class="icon">★</span>
                 </p>
             }
-            @if (@Model.ElementAt(3).StarRating == 4)
+            @if (@Model.ElementAt(2).StarRating == 4)
             {
                 <p class="bottom-left">
                     <span class="icon">★</span>
@@ -150,7 +166,7 @@
                     <span class="icon">★</span>
                 </p>
             }
-            @if (@Model.ElementAt(3).StarRating == 5)
+            @if (@Model.ElementAt(2).StarRating == 5)
             {
                 <p class="bottom-left">
                     <span class="icon">★</span>
@@ -162,8 +178,8 @@
             }
         </div>
         <div class="rating-data">
-            <p class="pull-right">@Model.ElementAt(3).RatingDate</p>
-            <p class="bottom-right">@Model.ElementAt(3).Comment</p>
+            <p class="pull-right">@Model.ElementAt(2).RatingDate</p>
+            <p class="bottom-right">@Model.ElementAt(2).Comment</p>
 
         </div>
     </div>
@@ -200,23 +216,30 @@
     }
 
     .ratings > div > a {
-        right: -85%;
+        right: -80%;
         position: relative;
-        bottom: 30px;
+        bottom: 50px;
+        font-size: 26px;
+    }
+
+    body > div > div > div.content > div > div.ratings > div:nth-child(1) {
+        position: relative;
+        top: 30px;
     }
 
     .notification {
-        position: fixed;
-        top: 7%;
-        right: 0;
-        background-color: #f8f8f8;
-        padding: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        font-size: 18px;  }
-
-    #notificationMessage {
-        margin-right: 10px;
+        font-size: 18px;
+        max-width: 40%;
+        position: relative;
+        right: -50%;
+        margin-bottom: 2%;
+        background-color: #88de88;
     }
+
+    /*#notificationMessage {
+        margin-right: 10px;
+    }*/
 
     .closeButton {
         float: right;
@@ -225,13 +248,18 @@
         background: transparent;
         border: none;
         cursor: pointer;
-        color: #888;
+        color: black;
     }
 
     .user-notif{
-        position: relative;
-        left: 10%;
-        top: 0;
+        padding: 10px
+    }
+
+    body > div > div > div.content > div{
+    max-width: 100%;
+    margin-right: 0;
+    position: relative;
+    right: -5%;
     }
 </style>
 

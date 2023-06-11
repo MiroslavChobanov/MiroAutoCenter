@@ -48,5 +48,9 @@ namespace MiroAutoCenter.Core.Contracts
         public IEnumerable<CarStatusEditModel> GetCarsWithStatus();
 
         public IEnumerable<CarStatusViewModel> AllCarStatuses();
+
+        public IEnumerable<CarStatusEditModel> GetReadyCars(IQueryable<Car> carQuery);
+
+        public IEnumerable<CarStatusEditModel> ReadyCarsByUser(string userId);
     }
 }

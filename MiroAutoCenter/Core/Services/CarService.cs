@@ -260,5 +260,30 @@ namespace MiroAutoCenter.Core.Services
                 })
                 .ToList();
         }
+
+        public IEnumerable<CarStatusEditModel> GetReadyCars(IQueryable<Car> carQuery)
+        {
+            return carQuery
+                .Where(x => !x.IsDeleted && x.CarStatus.StatusDescription == "Готов")
+                .Select(v => new CarStatusEditModel
+                {
+                    Id = v.Id,
+                    Make = v.Make,
+                    Model = v.Model,
+                    PlateNumber = v.PlateNumber,
+                    YearOfCreation = v.YearOfCreation,
+                    Mileage = v.Mileage,
+                    CarStatusId = v.CarStatusId,
+                    CarStatus = v.CarStatus
+                })
+                .ToList();
+        }
+
+        public IEnumerable<CarStatusEditModel> ReadyCarsByUser(string userId)
+        {
+            return GetReadyCars(this.data
+                .Cars
+                .Where(c => c.UserId == userId));
+        }
     }
 }

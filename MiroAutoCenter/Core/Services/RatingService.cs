@@ -46,7 +46,7 @@ namespace MiroAutoCenter.Core.Services
                      Username = x.User.UserName,
                      RatingDate = x.RatingDate
                  })
-                 .OrderBy(x => x.Id)
+                 .OrderBy(x => x.RatingDate)
                  .ToList();
         }
     }

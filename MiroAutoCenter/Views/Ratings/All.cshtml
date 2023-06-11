@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card card-primary">
-                <div class="cars-table-header id="ratings-header">
+                <div class="ratings-table-header id="ratings-header">
                     <h5>Отзиви</h5>
                 
                 </div>
@@ -22,7 +22,7 @@
                             <div class="col-12">
                                 <table class="table table-bordered table-hover dataTable dtr-inline" id="add-cars-table">
                                     <thead>
-                                        <tr class="table-primary" id="cars-first-row">
+                                        <tr class="table-primary" id="ratings-first-row">
                                             <th tabindex="0" rowspan="1" colspan="1">Рейтинг</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Коментар</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Потребител</th>
@@ -33,7 +33,7 @@
                                     <tbody>
                                         @foreach (var rating in Model)
                                         {
-                                            <tr class="cars-rows">
+                                            <tr class="ratings-rows">
                                             @if(rating.StarRating == 1)
                                             {
                                                 <td>
@@ -113,7 +113,7 @@
         display: inline-flex;
         flex-direction: column;
         font-family: expo-brand-demi,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-        font-size: 18px;
+        font-size: 22px;
         height: 35px;
         justify-content: center;
         line-height: 1;
@@ -128,5 +128,34 @@
         user-select: none;
         -webkit-user-select: none;
         touch-action: manipulation;
+        }
+
+    .ratings-table-header {
+        background: white;
+        color: black;
+        text-align: center;
+        padding: 25px 0px 15px 0px;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: unset;
+    }
+
+    #ratings-first-row th {
+        background: black;
+        color: white;
+        font-size: 20px;
+        border: unset;
+    }
+
+    .ratings-rows td {
+        background: white;
+        color: black;
+        font-size: 18px;
+    }
+
+        .ratings-rows td:last-child {
+            text-align: center;
         }
  </style>
