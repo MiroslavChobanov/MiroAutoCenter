@@ -48,6 +48,22 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Ratings" asp-action="All" class="nav-link">
+                                <i class="nav-icon fa-solid fa-check"></i>
+                                <p>
+                                    Отзиви
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="User" asp-action="Questions" class="nav-link">
+                                <i class="nav-icon fa-solid fa-question-circle"></i>
+                                <p>
+                                    Въпроси
+                                </p>
+                            </a>
+                        </li>
                 }else{
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Admin" asp-action="ApproveServices" class="nav-link">
@@ -81,7 +97,7 @@
                                 </p>
                             </a>
                         </li>
-                }       <li class="nav-item">
+                        <li class="nav-item">
                             <a asp-area="" asp-controller="Admin" asp-action="ReceivedCars" class="nav-link">
                                 <i class="nav-icon fa-solid fa-check"></i>
                                 <p>
@@ -89,6 +105,8 @@
                                 </p>
                             </a>
                         </li>
+                        
+                        }
                 </ul>
             </nav>
     </div>

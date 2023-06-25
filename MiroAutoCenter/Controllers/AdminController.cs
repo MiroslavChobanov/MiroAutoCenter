@@ -95,7 +95,11 @@ namespace MiroAutoCenter.Controllers
         {
             var myCars = this.cars.GetCarsWithStatus();
 
-            return View(myCars);
+            var orderedCars = myCars
+                .OrderBy(c => c.CarStatus)
+                .ToList();
+
+            return View(orderedCars);
         }
         [Authorize(Roles = UserConstants.Receptionist)]
         public IActionResult EditStatus(Guid id)
@@ -135,6 +139,7 @@ namespace MiroAutoCenter.Controllers
 
             var filteredAppts = approvedAppts
                 .Where(aa => aa.Time.Date > DateTime.UtcNow.Date)
+                .OrderBy(aa => aa.Time)
                 .ToList();
 
             return View(filteredAppts);
@@ -147,6 +152,7 @@ namespace MiroAutoCenter.Controllers
 
             var filteredAppts = approvedAppts
                 .Where(aa => aa.Time.Date < DateTime.UtcNow.Date)
+                .OrderBy(aa => aa.Time)
                 .ToList();
 
             return View(filteredAppts);

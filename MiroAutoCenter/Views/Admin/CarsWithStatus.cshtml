@@ -10,7 +10,7 @@ else
     <div class="row">
         <div class="col-12">
             <div class="card card-primary">
-                <div class="cars-table-header">
+                <div class="ratings-table-header">
                     <h5>Списък с автомобили</h5>
                 </div>
                 <div>
@@ -19,7 +19,7 @@ else
                             <div class="col-12">
                                 <table class="table table-bordered table-hover dataTable dtr-inline" id="add-cars-table">
                                     <thead>
-                                        <tr class="table-primary" id="cars-first-row">
+                                        <tr class="table-primary" id="ratings-first-row">
                                             <th tabindex="0" rowspan="1" colspan="1">Марка</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Модел</th>
                                             <th tabindex="0" rowspan="1" colspan="1">Година на производство</th>
@@ -31,7 +31,7 @@ else
                                     <tbody>
                                         @foreach (var car in Model)
                                         {
-                                            <tr class="cars-rows @car.CarStatus.ClassColor">
+                                            <tr class="ratings-rows @car.CarStatus.ClassColor">
                                                 <td>@car.Make</td>
                                                 <td>@car.Model</td>
                                                 <td>@car.YearOfCreation</td>
@@ -55,3 +55,34 @@ else
 }
 
 <h5 class="text-center">Брой автомобили: @Model.Count()</h5>
+
+<style>
+    .ratings-table-header {
+        background: white;
+        color: black;
+        text-align: center;
+        padding: 25px 0px 15px 0px;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: unset;
+    }
+
+    #ratings-first-row th {
+        background: black;
+        color: white;
+        font-size: 20px;
+        border: unset;
+    }
+
+    .ratings-rows td {
+        background: white;
+        color: black;
+        font-size: 18px;
+    }
+
+        .ratings-rows td:last-child {
+            text-align: center;
+        }
+</style>

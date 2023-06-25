@@ -26,14 +26,14 @@ namespace MiroAutoCenter.Controllers
             return View(ratings);
         }
 
-        //[Authorize]
+        [Authorize]
         public IActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public IActionResult Add(RatingAddModel rating)
         {
 

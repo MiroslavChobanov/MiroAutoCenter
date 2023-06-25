@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiroAutoCenter.Data;
 
@@ -11,9 +12,10 @@ using MiroAutoCenter.Data;
 namespace MiroAutoCenter.Data.Migrations
 {
     [DbContext(typeof(MiroAutoCenterDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230615090603_AddQuestionAndReplyTable")]
+    partial class AddQuestionAndReplyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -362,15 +364,9 @@ namespace MiroAutoCenter.Data.Migrations
                     b.Property<Guid?>("ReplyId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ReplyId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Questions");
                 });
@@ -608,15 +604,7 @@ namespace MiroAutoCenter.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ReplyId");
 
-                    b.HasOne("MiroAutoCenter.Data.Models.WebsiteUser", "User")
-                        .WithMany("Questions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Reply");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("MiroAutoCenter.Data.Models.Rating", b =>
@@ -696,8 +684,6 @@ namespace MiroAutoCenter.Data.Migrations
             modelBuilder.Entity("MiroAutoCenter.Data.Models.WebsiteUser", b =>
                 {
                     b.Navigation("Cars");
-
-                    b.Navigation("Questions");
 
                     b.Navigation("Ratings");
                 });

@@ -1,0 +1,27 @@
+﻿@using MiroAutoCenter.Core.Models.Questions
+@model QuestionsListingViewModel
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card card-primary" id="add-car-container">
+            <div class="card-header" id="add-rating-header">
+                <h3 class="card-title">Задаване на въпрос</h3>
+            </div>
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Въпрос</label>
+                        <input asp-for="Content" class="form-control" placeholder="Задайте своя въпрос тук...">
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="add-btn">Добавяне</button>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
