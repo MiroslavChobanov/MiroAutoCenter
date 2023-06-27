@@ -116,5 +116,36 @@ namespace MiroAutoCenter.Core.Services
                 })
                 .ToList();
         }
+
+        public bool AddReply(Guid questionId, string replyContent)
+        {
+            try
+            {
+                var question = this.data.Questions.FirstOrDefault(q => q.Id == questionId);
+
+                if (question == null)
+                {
+                    return false;
+                }
+
+                var reply = new Reply
+                {
+                    QuestionId = questionId,
+                    Content = replyContent,
+                    CreatedAt = DateTime.Now
+                };
+
+                this.data.Replies.Add(reply);
+                question.ReplyId = reply.Id;
+                this.data.SaveChanges();
+
+                return true; 
+            }
+            catch (Exception ex)
+            {
+                return false; 
+            }
+        }
+
     }
 }

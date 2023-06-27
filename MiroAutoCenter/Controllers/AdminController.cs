@@ -96,7 +96,7 @@ namespace MiroAutoCenter.Controllers
             var myCars = this.cars.GetCarsWithStatus();
 
             var orderedCars = myCars
-                .OrderBy(c => c.CarStatus)
+                .OrderBy(c => c.CarStatusId)
                 .ToList();
 
             return View(orderedCars);
@@ -164,6 +164,20 @@ namespace MiroAutoCenter.Controllers
             var received = this.admins.GetReceivedCars();
 
             return View(received);
+        }
+
+        public IActionResult AddReply(Guid questionId, string replyContent)
+        {
+            var success = admins.AddReply(questionId, replyContent);
+
+            if (success)
+            {
+                return RedirectToAction("Questions", "User");
+            }
+            else
+            {
+                return View("Error");
+            }
         }
     }
 }

@@ -21,38 +21,32 @@
                 <p class="question-datetime">@question.CreatedAt</p>
             </div>
                 <p class="question-text">@question.Content</p>
-                @if(question.Reply != null)
+                @if(question.ReplyId != null)
                 {
                     <div class="replies">
                         <div class="reply">
                             <div class="reply-info">
+                                <p class="reply-username">Admin</p>
                                 <p class="reply-datetime">@question.Reply.CreatedAt</p>
                             </div>
                             <p class="reply-text">@question.Reply.Content</p>
                         </div>
                     </div>
                 }
+                else
+                {
+                    @if (SignInManager.IsSignedIn(User) && this.User.IsInRole(UserConstants.Administrator))
+                    {
+                        <form asp-controller="Admin" asp-action="AddReply">
+                            <input type="hidden" name="questionId" value="@question.Id" />
+                            <input type="text" name="replyContent" placeholder="Enter your reply" />
+                            <button type="submit">Submit</button>
+                        </form>
+                    }
+                }
             
         </div>
     }
-    
-        <!-- More questions -->
-        <div class="question">
-            <div class="question-info">
-                <p class="question-username">John Doe</p>
-                <p class="question-datetime">May 15, 2023 10:30 AM</p>
-            </div>
-            <p class="question-text">How can I book an appointment?</p>
-            <div class="replies">
-                <div class="reply">
-                    <div class="reply-info">
-                        <p class="reply-username">Admin</p>
-                        <p class="reply-datetime">May 16, 2023 9:45 AM</p>
-                    </div>
-                    <p class="reply-text">To book an appointment, you can visit our website and click on the "Book Appointment" button.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 

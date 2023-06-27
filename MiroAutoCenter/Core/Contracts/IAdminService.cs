@@ -13,5 +13,6 @@ namespace MiroAutoCenter.Core.Contracts
         public AdminPendingServicesPaginationModel AllPendingServices(int pageNo, int pageSize);
         public IEnumerable<AppointmentModel> GetAllApproved();
         public IEnumerable<CarStatusEditModel> GetReceivedCars();
+        public bool AddReply(Guid questionId, string replyContent);
     }
 }
